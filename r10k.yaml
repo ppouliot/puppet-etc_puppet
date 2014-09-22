@@ -9,7 +9,10 @@
   :hiera:
     remote: https://github.com/ppouliot/puppet-hieradata
     basedir: /etc/puppet/hiera
-# :hiera-with-password-example:
+  :manifests:
+    remote: https://github.com/ppouliot/puppet-manifests
+    basedir: /etc/puppet/manifests
+# :github-with-password-example:
 #    remote: https://bwayne:batman2014@github.com/openstack-hyper-v/puppet-hieradata
 #    basedir: /etc/puppet/hiera
 :purgedirs:
