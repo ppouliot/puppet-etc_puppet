@@ -74,10 +74,10 @@ mod 'inifile',         :git => "#{base_url}/puppetlabs/puppetlabs-inifile",     
 #mod 'java',           :git => "#{base_url}/puppetlabs/puppetlabs-java",            :tag => '1.1.2' #SUPPORTED
 #mod 'java_ks',        :git => "#{base_url}/puppetlabs/puppetlabs-java_ks",         :tag => '1.2.5' #SUPPORTED
 mod 'haproxy',         :git => "#{base_url}/puppetlabs/puppetlabs-haproxy",         :tag => '1.0.0' #SUPPORTED
-mod 'registry',        :git => "#{base_url}/puppetlabs/puppetlabs-registry",        :tag => '1.0.3' #SUPPORTED
-mod 'reboot',          :git => "#{base_url}/puppetlabs/puppetlabs-reboot",          :tag => '0.1.8' #SUPPORTED
-mod 'powershell',      :git => "#{base_url}/puppetlabs/puppetlabs-powershell",      :tag => '1.0.3' #SUPPORTED
-mod 'acl',             :git => "#{base_url}/puppetlabs/puppetlabs-acl",             :tag => '1.0.3' #SUPPORTED
+mod 'registry',        :git => "#{base_url}/puppetlabs/puppetlabs-registry",        :tag => '1.0.3' #SUPPORTED #WINDOWS
+mod 'reboot',          :git => "#{base_url}/puppetlabs/puppetlabs-reboot",          :tag => '0.1.8' #SUPPORTED #WINDOWS
+mod 'powershell',      :git => "#{base_url}/puppetlabs/puppetlabs-powershell",      :tag => '1.0.3' #SUPPORTED #WINDOWS
+mod 'acl',             :git => "#{base_url}/puppetlabs/puppetlabs-acl",             :tag => '1.0.3' #SUPPORTED #WINDOWS
 mod 'erlang',        :git => "#{base_url}/garethr/garethr-erlang" #APPROVED
 mod 'augeasproviders',          :git => "#{base_url}/hercules-team/augeasproviders",          :tag => 'v2.0.0' #APPROVED
 mod 'augeasproviders_shellvar',   :git => "#{base_url}/hercules-team/augeasproviders_shellvar",          :tag => '2.0.1' #APPROVED
