@@ -78,7 +78,12 @@ mod 'registry',        :git => "#{base_url}/puppetlabs/puppetlabs-registry",    
 mod 'reboot',          :git => "#{base_url}/puppetlabs/puppetlabs-reboot",          :tag => '0.1.8' #SUPPORTED #WINDOWS
 mod 'powershell',      :git => "#{base_url}/puppetlabs/puppetlabs-powershell",      :tag => '1.0.3' #SUPPORTED #WINDOWS
 mod 'acl',             :git => "#{base_url}/puppetlabs/puppetlabs-acl",             :tag => '1.0.3' #SUPPORTED #WINDOWS
+mod 'sensu',         :git => "#{base_url}/sensu/sensu-puppet"         #APPROVED
+mod 'epel',          :git => "#{base_url}/stahnma/puppet-module-epel" #APPROVED
+mod 'python',        :git => "#{base_url}/stankevich/puppet-python"   #APPROVED
+mod 'jenkins',        :git => "#{base_url}/jenkinsci/puppet-jenkins"  #APPROVED
 mod 'erlang',        :git => "#{base_url}/garethr/garethr-erlang" #APPROVED
+mod 'docker',        :git => "#{base_url}/garethr/garethr-docker" #APPROVED
 mod 'augeasproviders',          :git => "#{base_url}/hercules-team/augeasproviders",          :tag => 'v2.0.0' #APPROVED
 mod 'augeasproviders_shellvar',   :git => "#{base_url}/hercules-team/augeasproviders_shellvar",          :tag => '2.0.1' #APPROVED
 mod 'augeasproviders_sysctl',     :git => "#{base_url}/hercules-team/augeasproviders_sysctl",          :tag => '2.0.0' #APPROVED
@@ -92,7 +97,5 @@ mod 'augeasproviders_apache',     :git => "#{base_url}/hercules-team/augeasprovi
 mod 'augeasproviders_syslog',     :git => "#{base_url}/hercules-team/augeasproviders_syslog",          :tag => '2.0.0' #APPROVED
 mod 'augeasproviders_postgresql', :git => "#{base_url}/hercules-team/augeasproviders_postgresql",          :tag => '2.0.0' #APPROVED
 mod 'augeasproviders_puppet',     :git => "#{base_url}/hercules-team/augeasproviders_puppet",          :tag => '2.0.0' #APPROVED
-mod 'sensu',         :git => "#{base_url}/sensu/sensu-puppet" #APPROVED
-mod 'epel',          :git => "#{base_url}/stahnma/puppet-module-epel" #APPROVED
 mod 'staging',          :git => "#{base_url}/nanliu/puppet-staging",          :tag => '1.0.0' #APPROVED
 mod 'rsyslog',   :git => "#{base_url}/saz/puppet-rsyslog",  :tag => 'v3.4.0' #APPROVED
