@@ -60,7 +60,7 @@ branch_name  = 'origin/havana'
 ##### Puppet Labs modules #####
 
 openstack_repo_prefix = "#{base_url}/#{openstack_module_account}/puppet"
-mod 'r10k',                       :git => "#{base_url}/acidprime/r10k" #PRODUCTION #SUPPORTED
+mod 'r10k',                      :git => "#{base_url}/acidprime/r10k" #PRODUCTION #SUPPORTED
 mod 'stdlib',          :git => "#{base_url}/puppetlabs/puppetlabs-stdlib",          :tag => '4.3.2' #SUPPORTED
 mod 'vcsrepo',         :git => "#{base_url}/puppetlabs/puppetlabs-vcsrepo",         :tag => '1.1.0' #SUPPORTED
 mod 'concat',          :git => "#{base_url}/puppetlabs/puppetlabs-concat",          :tag => '1.0.4' #SUPPORTED
