@@ -1,6 +1,6 @@
 # Warning: This file is managed by puppet.
 # 
-# Please look at the Puppetfile-cambridge module and files for information
+# Please look at the http://github.com/ppouliot/puppet-Puppetfile_Env  for information
 #
 #
 # This Logic was provided by bodepd
