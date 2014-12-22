@@ -79,7 +79,7 @@ mod 'reboot',          :git => "#{base_url}/puppetlabs/puppetlabs-reboot",      
 mod 'powershell',      :git => "#{base_url}/puppetlabs/puppetlabs-powershell",      :tag => '1.0.3' #SUPPORTED #WINDOWS
 mod 'tomcat',          :git => "#{base_url}/puppetlabs/puppetlabs-tomcat",          :tag => '1.2.0' #SUPPORTED
 mod 'acl',             :git => "#{base_url}/puppetlabs/puppetlabs-acl",             :tag => '1.0.3' #SUPPORTED #WINDOWS
-mod 'sqlserver',       :git => "#{base_url}/puppetlabs/puppetlabs-sqlserver",       :tag => '1.0.0' #SUPPORTED #WINDOWS
+#mod 'sqlserver',       :git => "#{base_url}/puppetlabs/puppetlabs-sqlserver",       :tag => '1.0.0' #SUPPORTED #WINDOWS
 mod 'sensu',         :git => "#{base_url}/sensu/sensu-puppet"            #APPROVED
 mod 'epel',          :git => "#{base_url}/stahnma/puppet-module-epel"    #APPROVED
 mod 'python',        :git => "#{base_url}/stankevich/puppet-python"      #APPROVED
