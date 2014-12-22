@@ -1,8 +1,5 @@
 :cachedir: /var/cache/r10k
 :sources:
-  :puppet_environments:
-    remote: https://github.com/ppouliot/puppet-environments
-    basedir: /etc/puppet/environments
   :puppetfiles:
     remote: https://github.com/ppouliot/puppet-Puppetfile_Env
     basedir: /etc/puppet/environments
