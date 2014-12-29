@@ -1,4 +1,5 @@
 warning ("You have just installed a R10K git workflow")
+
 case $environment {
   'production':{
     warning ("${fqdn} is in the production environment")
@@ -29,6 +30,28 @@ case $osfamily {
     warning ("***  FreeBSD OSFAMILY ***")
   }
   default:{
-    warning ("!!! Unsupported OS ${osfamily} !!!")
+    warning ("!!! Unsupported OSFAMILY ${osfamily} !!!")
+  }
+}
+
+
+case $operatingsystem {
+  'debian':{
+    warning ("*** Debian OS ***")
+  }
+  'ubuntu':{
+    warning ("*** Ubuntu OS ***")
+  }
+  'redhat':{
+    warning ("*** RedHat OS ***")
+  }
+  'windows':{
+    warning ("*** Windows OS ***")
+  }
+  'freebsd':{
+    warning ("***  FreeBSD OS ***")
+  }
+  default:{
+    warning ("!!! Unsupported Operating System ${operatingsystem} !!!")
   }
 }
