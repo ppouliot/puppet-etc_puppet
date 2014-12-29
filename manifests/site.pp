@@ -13,3 +13,22 @@ case $environment {
     warning ("${fqdn} is in the development environment")
   }
 }
+
+
+case $osfamily {
+  'Debian':{
+    warning ("*** Debian OSFAMILY ***")
+  }
+  'RedHat':{
+    warning ("*** RedHat OSFAMILY ***")
+  }
+  'Windows':{
+    warning ("*** Windows OSFAMILY ***")
+  }
+  'FreeBSD':{
+    warning ("***  FreeBSD OSFAMILY ***")
+  }
+  default:{
+    warning ("!!! Unsupported OS ${osfamily} !!!")
+  }
+}
