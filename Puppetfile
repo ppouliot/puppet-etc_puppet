@@ -85,7 +85,6 @@ mod 'epel',          :git => "#{base_url}/stahnma/puppet-module-epel"    #APPROV
 mod 'python',        :git => "#{base_url}/stankevich/puppet-python"      #APPROVED
 mod 'jenkins',       :git => "#{base_url}/jenkinsci/puppet-jenkins"      #APPROVED
 mod 'logrotate',     :git => "#{base_url}/rodjek/puppet-logrotate"       #APPROVED
-mod 'collectd',      :git => "#{base_url}/pdxcat/puppet-module-collectd" #APPROVED
 mod 'elasticsearch',   :git => "#{base_url}/elasticsearch/puppet-elasticsearch" #APPROVED
 mod 'erlang',        :git => "#{base_url}/garethr/garethr-erlang" #APPROVED
 mod 'docker',        :git => "#{base_url}/garethr/garethr-docker" #APPROVED
@@ -104,4 +103,5 @@ mod 'augeasproviders_postgresql', :git => "#{base_url}/hercules-team/augeasprovi
 mod 'augeasproviders_puppet',     :git => "#{base_url}/hercules-team/augeasproviders_puppet",          :tag => '2.0.0' #APPROVED
 mod 'wget',        :git => "#{base_url}/maestrodev/puppet-wget"       #APPROVED 
 mod 'staging',          :git => "#{base_url}/nanliu/puppet-staging",          :tag => '1.0.0' #APPROVED
+mod 'collectd', :git => "#{base_url}/pdxcat/puppet-module-collectd" #APPROVED
 mod 'rsyslog',   :git => "#{base_url}/saz/puppet-rsyslog",  :tag => 'v3.4.0' #APPROVED
