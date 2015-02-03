@@ -103,6 +103,6 @@ mod 'augeasproviders_syslog',     :git => "#{base_url}/hercules-team/augeasprovi
 mod 'augeasproviders_postgresql', :git => "#{base_url}/hercules-team/augeasproviders_postgresql",          :tag => '2.0.0' #APPROVED
 mod 'augeasproviders_puppet',     :git => "#{base_url}/hercules-team/augeasproviders_puppet",          :tag => '2.0.0' #APPROVED
 mod 'wget',        :git => "#{base_url}/maestrodev/puppet-wget"       #APPROVED 
-mod 'staging',          :git => "#{base_url}/nanliu/puppet-staging",          :tag => '1.0.0' #APPROVED
+mod 'staging',          :git => "#{base_url}/nanliu/puppet-staging",          :tag => '1.0.4' #APPROVED
 mod 'collectd', :git => "#{base_url}/pdxcat/puppet-module-collectd" #APPROVED
 mod 'rsyslog',   :git => "#{base_url}/saz/puppet-rsyslog",  :tag => 'v3.4.0' #APPROVED
