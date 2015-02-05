@@ -3,7 +3,6 @@
   - yaml
 :hierarchy:
   - "%{clientcert}"
-  - "%{environment}"
   - "%{calling_module}"
   - common
 
