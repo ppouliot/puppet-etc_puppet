@@ -55,5 +55,3 @@ case $operatingsystem {
     warning ("!!! Unsupported Operating System ${operatingsystem} !!!")
   }
 }
-
-import 'nodes.pp'
