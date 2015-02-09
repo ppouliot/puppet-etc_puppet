@@ -1,6 +1,7 @@
 ---
 :backends:
   - yaml
+  - eyaml
 :hierarchy:
   - "%{clientcert}"
   - "%{hostname}"
