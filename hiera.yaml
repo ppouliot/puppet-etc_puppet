@@ -4,7 +4,7 @@
   - eyaml
 :hierarchy:
   - "%{clientcert}"
-  - "%{hostname}"
+  - "%{fqdn}"
   - "%{calling_module}"
   - common
 
@@ -15,7 +15,7 @@
 # When specifying a datadir, make sure the directory exists.
   :datadir: '/etc/puppet/hiera/%{environment}'
 :eyaml:
-  :extension: 'yaml'
   :datadir: '/etc/puppet/hiera/%{environment}'
-  :pkcs7_private_key:/etc/puppet/secure/keys/private_key.pkcs7.pem
-  :pkcs7_public_key:/etc/puppet/secure/keys/public_key.pkcs7.pem
+  :extension: "yaml"
+  :pkcs7_private_key: /etc/puppet/secure/keys/private_key.pkcs7.pem
+  :pkcs7_public_key: /etc/puppet/secure/keys/public_key.pkcs7.pem
