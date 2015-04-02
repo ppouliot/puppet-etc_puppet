@@ -1,4 +1,11 @@
-warning ("You have just installed a R10K git workflow")
+notice("Node ${fqdn} is puppet mananaged by the OpenStack Hyper-V CI team")
+
+class {'profiles::time':
+  ntpservers => 'pool.ntp.org',
+  timezone   => 'UTC',
+} ->
+class{'profiles::remote_access':
+} -> 
 
 case $environment {
   'production':{

@@ -1,10 +1,18 @@
 
 node /^(docker[0-1]).openstack.tld/{
+  package{'expect':
+    ensure => latest,
+  }
 
   class {'docker':
-    tcp_bind    => "tcp://${::ipaddress}:4243",
-    socket_bind => 'unix:///var/run/docker.sock',
+    tcp_bind    => 'tcp://0.0.0.0:4243',
+#    socket_bind => 'unix:///var/run/docker.sock',
   }
+#  class{'jenkins::slave':
+#    masterurl => 'http:://moneypenny.openstack.tld:9000',
+#    ui_user   => 'jenkins',
+#    ui_pass   => 'jenkins',
+#  }
 
   case $operatingsystem {
     'Ubuntu':{
@@ -13,6 +21,12 @@ node /^(docker[0-1]).openstack.tld/{
       docker::image {'ubuntu':
         image_tag =>  ['trusty']
       }
+      docker::image {'base':
+ 
+#        image_tag =>  ['trusty']
+        ensure    =>  'absent',
+      }
+    
     
     }
     'Centos':{
@@ -24,6 +38,8 @@ node /^(docker[0-1]).openstack.tld/{
       warning("Unsupported ${operatingsystem}")
     }
   }
+
+
 #  class {'sensu':}
 #  class {'sensu_client_plugins': require => Class['sensu'],}
 }
