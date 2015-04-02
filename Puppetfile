@@ -65,21 +65,22 @@ mod 'hiera',        :git => "#{base_url}/hunner/puppet-hiera" #PRODUCTION #SUPPO
 mod 'stdlib',          :git => "#{base_url}/puppetlabs/puppetlabs-stdlib",          :tag => '4.5.1' #SUPPORTED
 mod 'vcsrepo',         :git => "#{base_url}/puppetlabs/puppetlabs-vcsrepo",         :tag => '1.2.0' #SUPPORTED
 mod 'concat',          :git => "#{base_url}/puppetlabs/puppetlabs-concat",          :tag => '1.2.0' #SUPPORTED
-mod 'apt',             :git => "#{base_url}/puppetlabs/puppetlabs-apt",             :tag => '1.7.0' #SUPPORTED
-mod 'firewall',        :git => "#{base_url}/puppetlabs/puppetlabs-firewall",        :tag => '1.4.0' #SUPPORTED
+mod 'apt',             :git => "#{base_url}/puppetlabs/puppetlabs-apt",             :tag => '1.8.0' #SUPPORTED
+mod 'firewall',        :git => "#{base_url}/puppetlabs/puppetlabs-firewall",        :tag => '1.5.0' #SUPPORTED
 mod 'ntp',             :git => "#{base_url}/puppetlabs/puppetlabs-ntp",             :tag => '3.3.0' #SUPPORTED
-mod 'postgresql',      :git => "#{base_url}/puppetlabs/puppetlabs-postgresql",      :tag => '4.1.0' #SUPPORTED
-mod 'apache',          :git => "#{base_url}/puppetlabs/puppetlabs-apache",          :tag => '1.3.0' #SUPPORTED
-mod 'mysql',           :git => "#{base_url}/puppetlabs/puppetlabs-mysql",           :tag => '3.2.0' #SUPPORTED
+mod 'postgresql',      :git => "#{base_url}/puppetlabs/puppetlabs-postgresql",      :tag => '4.3.0' #SUPPORTED
+mod 'apache',          :git => "#{base_url}/puppetlabs/puppetlabs-apache",          :tag => '1.4.0' #SUPPORTED
+mod 'mysql',           :git => "#{base_url}/puppetlabs/puppetlabs-mysql",           :tag => '3.3.0' #SUPPORTED
 mod 'inifile',         :git => "#{base_url}/puppetlabs/puppetlabs-inifile",         :tag => '1.2.0' #SUPPORTED
 mod 'java',            :git => "#{base_url}/puppetlabs/puppetlabs-java",            :tag => '1.3.0' #SUPPORTED
 mod 'java_ks',         :git => "#{base_url}/puppetlabs/puppetlabs-java_ks",         :tag => '1.2.6' #SUPPORTED
-mod 'haproxy',         :git => "#{base_url}/puppetlabs/puppetlabs-haproxy",         :tag => '1.1.0' #SUPPORTED
-mod 'registry',        :git => "#{base_url}/puppetlabs/puppetlabs-registry",        :tag => '1.0.3' #SUPPORTED #WINDOWS
+mod 'haproxy',         :git => "#{base_url}/puppetlabs/puppetlabs-haproxy",         :tag => '1.2.0' #SUPPORTED
+mod 'registry',        :git => "#{base_url}/puppetlabs/puppetlabs-registry",        :tag => '1.1.0' #SUPPORTED #WINDOWS
 mod 'reboot',          :git => "#{base_url}/puppetlabs/puppetlabs-reboot",          :tag => '0.1.9' #SUPPORTED #WINDOWS
 mod 'powershell',      :git => "#{base_url}/puppetlabs/puppetlabs-powershell",      :tag => '1.0.4' #SUPPORTED #WINDOWS
 mod 'tomcat',          :git => "#{base_url}/puppetlabs/puppetlabs-tomcat",          :tag => '1.2.0' #SUPPORTED
 mod 'acl',             :git => "#{base_url}/puppetlabs/puppetlabs-acl",             :tag => '1.1.0' #SUPPORTED #WINDOWS
+mod 'aws',             :git => "#{base_url}/puppetlabs/puppetlabs-aws",             :tag => '1.0.0' #SUPPORTED
 #mod 'f5',              :git => "#{base_url}/puppetlabs/puppetlabs-f5",              :tag => '1.0.0' #SUPPORTED #WINDOWS
 #mod 'sqlserver',       :git => "#{base_url}/puppetlabs/puppetlabs-sqlserver",       :tag => '1.0.0' #SUPPORTED #WINDOWS
 mod 'sensu',         :git => "#{base_url}/sensu/sensu-puppet"            #APPROVED
