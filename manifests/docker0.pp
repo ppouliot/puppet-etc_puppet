@@ -1,9 +1,5 @@
-
 node /^(docker[0-1]).openstack.tld/{
-  package{'expect':
-    ensure => latest,
-  }
-
+  class {'profiles::mgmt_tools':}
   class {'docker':
     tcp_bind    => 'tcp://0.0.0.0:4243',
 #    socket_bind => 'unix:///var/run/docker.sock',
@@ -21,13 +17,6 @@ node /^(docker[0-1]).openstack.tld/{
       docker::image {'ubuntu':
         image_tag =>  ['trusty']
       }
-      docker::image {'base':
- 
-#        image_tag =>  ['trusty']
-        ensure    =>  'absent',
-      }
-    
-    
     }
     'Centos':{
       docker::image {'centos':

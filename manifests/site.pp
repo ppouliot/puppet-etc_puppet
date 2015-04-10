@@ -9,15 +9,14 @@ notice("Node ${fqdn} is puppet mananaged by the OpenStack Hyper-V CI team")
 class {'profiles::time':
   ntpservers => 'pool.ntp.org',
   timezone   => 'UTC',
-} ->
+}
 
 # Remote Access 
-class{'profiles::remote_access':
-} -> 
+class{'profiles::remote_access':}
 
 # Monitoring Agent 
 #class{'profiles::monitoring':
-#} -> 
+#}
 
 case $environment {
   'production':{
@@ -75,5 +74,13 @@ case $operatingsystem {
   }
   default:{
     warning ("!!! Unsupported Operating System ${operatingsystem} !!!")
+  }
+}
+if versioncmp($::puppetversion,'3.6.1') >= 0 {
+
+  $allow_virtual_packages = hiera('allow_virtual_packages',false)
+
+  Package {
+    allow_virtual => $allow_virtual_packages,
   }
 }
