@@ -89,7 +89,7 @@ mod 'python',        :git => "#{base_url}/stankevich/puppet-python"      #APPROV
 mod 'logrotate',     :git => "#{base_url}/rodjek/puppet-logrotate"       #APPROVED
 mod 'elasticsearch',   :git => "#{base_url}/elasticsearch/puppet-elasticsearch" #APPROVED
 mod 'erlang',        :git => "#{base_url}/garethr/garethr-erlang" #APPROVED
-mod 'docker',        :git => "#{base_url}/garethr/garethr-docker" #APPROVED
+mod 'docker',        :git => "#{base_url}/garethr/garethr-docker", :tag => 'v4.0.2' #APPROVED
 mod 'augeasproviders',          :git => "#{base_url}/hercules-team/augeasproviders",          :tag => 'v2.0.0' #APPROVED
 mod 'augeasproviders_shellvar',   :git => "#{base_url}/hercules-team/augeasproviders_shellvar",          :tag => '2.0.1' #APPROVED
 mod 'augeasproviders_sysctl',     :git => "#{base_url}/hercules-team/augeasproviders_sysctl",          :tag => '2.0.0' #APPROVED
