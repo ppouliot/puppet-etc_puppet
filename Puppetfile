@@ -63,7 +63,7 @@ openstack_repo_prefix = "#{base_url}/#{openstack_module_account}/puppet"
 mod 'hiera',        :git => "#{base_url}/hunner/puppet-hiera" #PRODUCTION #SUPPORTED
 mod 'stdlib',          :git => "#{base_url}/puppetlabs/puppetlabs-stdlib",          :tag => '4.6.0' #SUPPORTED
 mod 'vcsrepo',         :git => "#{base_url}/puppetlabs/puppetlabs-vcsrepo",         :tag => '1.2.0' #SUPPORTED
-mod 'concat',          :git => "#{base_url}/puppetlabs/puppetlabs-concat",          :tag => '1.2.1' #SUPPORTED
+mod 'concat',          :git => "#{base_url}/puppetlabs/puppetlabs-concat",          :tag => '1.2.0' #SUPPORTED
 mod 'apt',             :git => "#{base_url}/puppetlabs/puppetlabs-apt",             :tag => '2.0.1' #SUPPORTED
 mod 'firewall',        :git => "#{base_url}/puppetlabs/puppetlabs-firewall",        :tag => '1.5.0' #SUPPORTED
 mod 'ntp',             :git => "#{base_url}/puppetlabs/puppetlabs-ntp",             :tag => '3.3.0' #SUPPORTED
