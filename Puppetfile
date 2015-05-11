@@ -88,7 +88,7 @@ mod 'epel',          :git => "#{base_url}/stahnma/puppet-module-epel"    #APPROV
 mod 'python',        :git => "#{base_url}/stankevich/puppet-python"      #APPROVED
 mod 'logrotate',     :git => "#{base_url}/rodjek/puppet-logrotate"       #APPROVED
 mod 'elasticsearch',   :git => "#{base_url}/elasticsearch/puppet-elasticsearch" #APPROVED
-mod 'erlang',        :git => "#{base_url}/garethr/garethr-erlang", :tag => '0.3.0' #APPROVED
+mod 'erlang',        :git => "#{base_url}/garethr/garethr-erlang", :tag => 'v0.3.0' #APPROVED
 mod 'docker',        :git => "#{base_url}/garethr/garethr-docker", :tag => 'v4.0.2' #APPROVED
 mod 'augeasproviders',          :git => "#{base_url}/hercules-team/augeasproviders",          :tag => 'v2.0.0' #APPROVED
 mod 'augeasproviders_shellvar',   :git => "#{base_url}/hercules-team/augeasproviders_shellvar",          :tag => '2.0.1' #APPROVED
@@ -104,9 +104,9 @@ mod 'augeasproviders_syslog',     :git => "#{base_url}/hercules-team/augeasprovi
 mod 'augeasproviders_postgresql', :git => "#{base_url}/hercules-team/augeasproviders_postgresql",          :tag => '2.0.0' #APPROVED
 mod 'augeasproviders_puppet',     :git => "#{base_url}/hercules-team/augeasproviders_puppet",          :tag => '2.0.0' #APPROVED
 mod 'jenkins',         :git => "#{base_url}/jenkinsci/puppet-jenkins", :tag => 'v1.4.0'  #APPROVED
-mod 'wget',        :git => "#{base_url}/maestrodev/puppet-wget", :tag => '1.4.0'  #APPROVED 
+mod 'wget',        :git => "#{base_url}/maestrodev/puppet-wget", :tag => 'v1.4.0'  #APPROVED 
 mod 'python',        :git => "#{base_url}/stankevich/puppet-python", :tag => '1.9.4' #APPROVED
-mod 'r10k',         :git => "#{base_url}/acidprime/r10k", :tag => '2.7.4' #APPROVED
+mod 'r10k',         :git => "#{base_url}/acidprime/r10k", :tag => 'v2.7.4' #APPROVED
 mod 'staging',          :git => "#{base_url}/nanliu/puppet-staging",          :tag => '1.0.4' #APPROVED
 mod 'collectd', :git => "#{base_url}/pdxcat/puppet-module-collectd" #APPROVED
 mod 'rsyslog',   :git => "#{base_url}/saz/puppet-rsyslog",  :tag => 'v3.4.0' #APPROVED
