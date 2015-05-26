@@ -13,6 +13,8 @@ class {'profiles::time':
 
 # Remote Access 
 class{'profiles::remote_access':}
+#  Management Tools
+class{'profiles::mgmt_tools':}
 
 # Monitoring Agent 
 #class{'profiles::monitoring':
