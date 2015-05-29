@@ -108,5 +108,5 @@ mod 'wget',        :git => "#{base_url}/maestrodev/puppet-wget", :tag => 'v1.4.0
 mod 'python',        :git => "#{base_url}/stankevich/puppet-python", :tag => '1.9.4' #APPROVED
 mod 'r10k',         :git => "#{base_url}/acidprime/r10k", :tag => 'v2.7.4' #APPROVED
 mod 'staging',          :git => "#{base_url}/nanliu/puppet-staging",          :tag => '1.0.4' #APPROVED
-mod 'collectd', :git => "#{base_url}/pdxcat/puppet-module-collectd" #APPROVED
+mod 'collectd', :git => "#{base_url}/pdxcat/puppet-module-collectd",   :tag => 'v3.3.0' #APPROVED
 mod 'rsyslog',   :git => "#{base_url}/saz/puppet-rsyslog",  :tag => 'v3.4.0' #APPROVED
