@@ -64,7 +64,7 @@ mod 'hiera',        :git => "#{base_url}/hunner/puppet-hiera" #PRODUCTION #SUPPO
 mod 'vcsrepo',         :git => "#{base_url}/puppetlabs/puppetlabs-vcsrepo",         :tag => '1.3.0' #SUPPORTED
 mod 'stdlib',          :git => "#{base_url}/puppetlabs/puppetlabs-stdlib",          :tag => '4.6.0' #SUPPORTED
 mod 'apt',             :git => "#{base_url}/puppetlabs/puppetlabs-apt",             :tag => '2.0.1' #SUPPORTED
-mod 'concat',          :git => "#{base_url}/puppetlabs/puppetlabs-concat",          :tag => '2.0.0' #SUPPORTED
+mod 'concat',          :git => "#{base_url}/puppetlabs/puppetlabs-concat",          :tag => '1.2.2' #SUPPORTED
 mod 'firewall',        :git => "#{base_url}/puppetlabs/puppetlabs-firewall",        :tag => '1.6.0' #SUPPORTED
 mod 'apache',          :git => "#{base_url}/puppetlabs/puppetlabs-apache",          :tag => '1.4.1' #SUPPORTED
 mod 'postgresql',      :git => "#{base_url}/puppetlabs/puppetlabs-postgresql",      :tag => '4.3.0' #SUPPORTED
