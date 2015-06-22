@@ -63,28 +63,29 @@ openstack_repo_prefix = "#{base_url}/#{openstack_module_account}/puppet"
 mod 'hiera',        :git => "#{base_url}/hunner/puppet-hiera" #PRODUCTION #SUPPORTED
 mod 'vcsrepo',         :git => "#{base_url}/puppetlabs/puppetlabs-vcsrepo",         :tag => '1.3.0' #SUPPORTED
 mod 'stdlib',          :git => "#{base_url}/puppetlabs/puppetlabs-stdlib",          :tag => '4.6.0' #SUPPORTED
-mod 'apt',             :git => "#{base_url}/puppetlabs/puppetlabs-apt",             :tag => '2.0.1' #SUPPORTED
-mod 'concat',          :git => "#{base_url}/puppetlabs/puppetlabs-concat",          :tag => '1.2.2' #SUPPORTED
+mod 'apt',             :git => "#{base_url}/puppetlabs/puppetlabs-apt",             :tag => '2.1.0' #SUPPORTED
+mod 'concat',          :git => "#{base_url}/puppetlabs/puppetlabs-concat",          :tag => '1.2.3' #SUPPORTED
 mod 'firewall',        :git => "#{base_url}/puppetlabs/puppetlabs-firewall",        :tag => '1.6.0' #SUPPORTED
-mod 'apache',          :git => "#{base_url}/puppetlabs/puppetlabs-apache",          :tag => '1.4.1' #SUPPORTED
+mod 'apache',          :git => "#{base_url}/puppetlabs/puppetlabs-apache",          :tag => '1.5.0' #SUPPORTED
 mod 'postgresql',      :git => "#{base_url}/puppetlabs/puppetlabs-postgresql",      :tag => '4.3.0' #SUPPORTED
 mod 'ntp',             :git => "#{base_url}/puppetlabs/puppetlabs-ntp",             :tag => '4.0.0' #SUPPORTED
-mod 'inifile',         :git => "#{base_url}/puppetlabs/puppetlabs-inifile",         :tag => '1.2.0' #SUPPORTED
+mod 'inifile',         :git => "#{base_url}/puppetlabs/puppetlabs-inifile",         :tag => '1.3.0' #SUPPORTED
 mod 'mysql',           :git => "#{base_url}/puppetlabs/puppetlabs-mysql",           :tag => '3.4.0' #SUPPORTED
 mod 'java',            :git => "#{base_url}/puppetlabs/puppetlabs-java",            :tag => '1.3.0' #SUPPORTED
 mod 'haproxy',         :git => "#{base_url}/puppetlabs/puppetlabs-haproxy",         :tag => '1.2.0' #SUPPORTED
 mod 'java_ks',         :git => "#{base_url}/puppetlabs/puppetlabs-java_ks",         :tag => '1.3.0' #SUPPORTED
 mod 'registry',        :git => "#{base_url}/puppetlabs/puppetlabs-registry",        :tag => '1.1.0' #SUPPORTED #WINDOWS
 mod 'powershell',      :git => "#{base_url}/puppetlabs/puppetlabs-powershell",      :tag => '1.0.4' #SUPPORTED #WINDOWS
-mod 'tomcat',          :git => "#{base_url}/puppetlabs/puppetlabs-tomcat",          :tag => '1.2.0' #SUPPORTED
+mod 'tomcat',          :git => "#{base_url}/puppetlabs/puppetlabs-tomcat",          :tag => '1.3.0' #SUPPORTED
 mod 'reboot',          :git => "#{base_url}/puppetlabs/puppetlabs-reboot",          :tag => '1.0.0' #SUPPORTED #WINDOWS
 mod 'acl',             :git => "#{base_url}/puppetlabs/puppetlabs-acl",             :tag => '1.1.0' #SUPPORTED #WINDOWS
 mod 'aws',             :git => "#{base_url}/puppetlabs/puppetlabs-aws",             :tag => '1.0.0' #SUPPORTED
-mod 'docker_platform', :git => "#{base_url}/puppetlabs/puppetlabs-aws",             :tag => '1.0.0' #SUPPORTED
+mod 'docker_platform', :git => "#{base_url}/puppetlabs/puppetlabs-docker_platform", :tag => '1.0.0' #SUPPORTED
+mod 'tagmail',         :git => "#{base_url}/puppetlabs/puppetlabs-tagmail",         :tag => '1.0.0' #SUPPORTED
 #mod 'f5',              :git => "#{base_url}/puppetlabs/puppetlabs-f5",              :tag => '1.0.0' #SUPPORTED #WINDOWS
 #mod 'sqlserver',       :git => "#{base_url}/puppetlabs/puppetlabs-sqlserver",       :tag => '1.0.0' #SUPPORTED #WINDOWS
-mod 'sensu',         :git => "#{base_url}/sensu/sensu-puppet"            #APPROVED
-mod 'epel',          :git => "#{base_url}/stahnma/puppet-module-epel"    #APPROVED
+mod 'sensu',         :git => "#{base_url}/sensu/sensu-puppet",         :tag => '1.5.5'  #APPROVED
+mod 'epel',          :git => "#{base_url}/stahnma/puppet-module-epel" #APPROVED
 mod 'python',        :git => "#{base_url}/stankevich/puppet-python"      #APPROVED
 mod 'logrotate',     :git => "#{base_url}/rodjek/puppet-logrotate"       #APPROVED
 mod 'elasticsearch',   :git => "#{base_url}/elasticsearch/puppet-elasticsearch" #APPROVED
@@ -104,7 +105,7 @@ mod 'augeasproviders_syslog',     :git => "#{base_url}/hercules-team/augeasprovi
 mod 'augeasproviders_postgresql', :git => "#{base_url}/hercules-team/augeasproviders_postgresql",          :tag => '2.0.0' #APPROVED
 mod 'augeasproviders_puppet',     :git => "#{base_url}/hercules-team/augeasproviders_puppet",          :tag => '2.0.0' #APPROVED
 mod 'jenkins',         :git => "#{base_url}/jenkinsci/puppet-jenkins", :tag => 'v1.4.0'  #APPROVED
-mod 'wget',        :git => "#{base_url}/maestrodev/puppet-wget", :tag => 'v1.4.0'  #APPROVED 
+mod 'wget',        :git => "#{base_url}/maestrodev/puppet-wget", :tag => 'v1.7.0'  #APPROVED 
 mod 'python',        :git => "#{base_url}/stankevich/puppet-python", :tag => '1.9.4' #APPROVED
 mod 'r10k',         :git => "#{base_url}/acidprime/r10k", :tag => 'v2.7.4' #APPROVED
 mod 'staging',          :git => "#{base_url}/nanliu/puppet-staging",          :tag => '1.0.4' #APPROVED
