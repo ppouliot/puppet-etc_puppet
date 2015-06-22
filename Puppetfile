@@ -84,7 +84,7 @@ mod 'docker_platform', :git => "#{base_url}/puppetlabs/puppetlabs-docker_platfor
 mod 'tagmail',         :git => "#{base_url}/puppetlabs/puppetlabs-tagmail",         :tag => '1.0.0' #SUPPORTED
 #mod 'f5',              :git => "#{base_url}/puppetlabs/puppetlabs-f5",              :tag => '1.0.0' #SUPPORTED #WINDOWS
 #mod 'sqlserver',       :git => "#{base_url}/puppetlabs/puppetlabs-sqlserver",       :tag => '1.0.0' #SUPPORTED #WINDOWS
-mod 'sensu',         :git => "#{base_url}/sensu/sensu-puppet",         :tag => '1.5.5'  #APPROVED
+mod 'sensu',         :git => "#{base_url}/sensu/sensu-puppet",         :tag => 'v1.5.5'  #APPROVED
 mod 'epel',          :git => "#{base_url}/stahnma/puppet-module-epel" #APPROVED
 mod 'python',        :git => "#{base_url}/stankevich/puppet-python"      #APPROVED
 mod 'logrotate',     :git => "#{base_url}/rodjek/puppet-logrotate"       #APPROVED
