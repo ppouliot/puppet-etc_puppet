@@ -5,7 +5,12 @@ node 'moneypenny.openstack.tld'{
 dhcp-range=10.4.1.0,proxy
 dhcp-range=10.5.1.0,proxy
 dhcp-range=10.6.1.0,proxy
-dhcp-range=10.7.1.0,proxy'
+dhcp-range=10.7.1.0,proxy
+dhcp-range=10.8.1.0,proxy
+dhcp-range=10.9.1.0,proxy
+dhcp-range=10.10.1.0,proxy
+dhcp-range=10.11.1.0,proxy
+dhcp-range=10.12.1.0,proxy'
 
 class { 'r10k':
   version           => latest,
@@ -26,7 +31,7 @@ class { 'r10k':
 }
 
   class {'quartermaster':}
-  class {'quartermaster::dban':}
+#  class {'quartermaster::dban':}
 
   package{'groovy':
     ensure => latest, 

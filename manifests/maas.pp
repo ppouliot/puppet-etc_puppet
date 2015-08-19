@@ -67,17 +67,17 @@ node 'maas0.openstack.tld' {
   class{'juju':} ->
   juju::generic_config{'root':}
 }
-node 'maas1.openstack.tld','maas2.openstack.tld','maas3.openstack.tld' {
-  include apt
-  apt::ppa{"ppa:maas-maintainers/stable":} ->
-  package{'maas-cluster-controller':
-    ensure => latest,
-  } 
-  file{'/var/lib/maas/secret':
-    ensure => file,
-    owner  => 'maas',
-    group  => 'maas',
-    mode   => '640',
-    source => 'puppet://files/maas/secret',
+node 'maas1.openstack.tld',
+     'maas2.openstack.tld',
+     'maas3.openstack.tld',
+     'maas4.openstack.tld',
+     'maas5.openstack.tld',
+     'maas6.openstack.tld',
+     'maas7.openstack.tld',
+     'maas8.openstack.tld',
+     'maas9.openstack.tld'{
+
+  class{'maas::cluster_controller':
+    cluster_region_controller => '10.5.1.39',
   }
 }
