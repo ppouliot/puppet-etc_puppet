@@ -84,14 +84,14 @@ mod 'tagmail',         :git => "#{base_url}/puppetlabs/puppetlabs-tagmail",     
 mod 'docker_platform', :git => "#{base_url}/puppetlabs/puppetlabs-docker_platform", :tag => '1.1.0' #SUPPORTED
 mod 'puppet_agent',    :git => "#{base_url}/puppetlabs/puppetlabs-puppet_agent",    :tag => '1.0.0' #SUPPORTED
 mod 'wsus_client',     :git => "#{base_url}/puppetlabs/puppetlabs-wsus_client",     :tag => '1.0.0' #SUPPORTED
-mod 'ciscopuppet',     :git => "#{base_url}/cisco/cisco-network-puppet-module",     :tag => 'v1.0.0' #SUPPORTED
+#mod 'ciscopuppet',     :git => "#{base_url}/cisco/cisco-network-puppet-module",     :tag => 'v1.0.0' #SUPPORTED
 #mod 'f5',              :git => "#{base_url}/puppetlabs/puppetlabs-f5",              :tag => '1.0.0' #SUPPORTED #WINDOWS
 #mod 'sqlserver',       :git => "#{base_url}/puppetlabs/puppetlabs-sqlserver",       :tag => '1.0.0' #SUPPORTED #WINDOWS
 mod 'sensu',         :git => "#{base_url}/sensu/sensu-puppet",         :tag => 'v1.5.5'  #APPROVED
 mod 'epel',          :git => "#{base_url}/stahnma/puppet-module-epel", :tag => '1.1.1' #APPROVED
 mod 'python',        :git => "#{base_url}/stankevich/puppet-python",   :tag => '1.9.7'      #APPROVED
 mod 'logrotate',     :git => "#{base_url}/rodjek/puppet-logrotate",    :tag => 'v1.0.2'       #APPROVED
-mod 'elasticsearch',   :git => "#{base_url}/elasticsearch/puppet-elasticsearch", :tag => '0.9.9' #APPROVED
+mod 'elasticsearch',     :git => "#{base_url}/elastic/puppet-elasticsearch", :tag => '0.9.9' #APPROVED
 mod 'erlang',        :git => "#{base_url}/garethr/garethr-erlang", :ref => 'master' #APPROVED
 mod 'docker',        :git => "#{base_url}/garethr/garethr-docker", :tag => 'v4.1.1' #APPROVED
 mod 'augeasproviders',          :git => "#{base_url}/hercules-team/augeasproviders",                :tag => 'v2.1.3' #APPROVED
