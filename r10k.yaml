@@ -9,7 +9,6 @@
 # :github-with-password-example:
 #    remote: https://bwayne:batman2014@github.com/openstack-hyper-v/puppet-hieradata
 #    basedir: /etc/puppet/hiera
-:purgedirs:
-  - /etc/puppet/environments
-  - /etc/puppet/hiera
-
+#:purgedirs:
+#  - /etc/puppet/environments
+#  - /etc/puppet/hiera
