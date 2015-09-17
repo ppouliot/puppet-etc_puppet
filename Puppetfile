@@ -91,6 +91,7 @@ mod 'sensu',         :git => "#{base_url}/sensu/sensu-puppet",         :tag => '
 mod 'epel',          :git => "#{base_url}/stahnma/puppet-module-epel", :tag => '1.1.1' #APPROVED
 mod 'python',        :git => "#{base_url}/stankevich/puppet-python",   :tag => '1.9.7'      #APPROVED
 mod 'logrotate',     :git => "#{base_url}/rodjek/puppet-logrotate",    :tag => 'v1.0.2'       #APPROVED
+mod 'gitlab',        :git => "#{base_url}/vshn/puppet-gitlab",         :tag => 'v1.0.2'       #APPROVED
 mod 'elasticsearch',     :git => "#{base_url}/elastic/puppet-elasticsearch", :tag => '0.9.9' #APPROVED
 mod 'erlang',        :git => "#{base_url}/garethr/garethr-erlang", :ref => 'master' #APPROVED
 mod 'docker',        :git => "#{base_url}/garethr/garethr-docker", :tag => 'v4.1.1' #APPROVED
