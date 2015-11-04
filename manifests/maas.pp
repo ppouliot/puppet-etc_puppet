@@ -64,8 +64,9 @@ node 'maas0.openstack.tld' {
 # Uncomment to use the ppa:maas-maintainers packages
     maas_maintainers_release => 'stable',
   } -> 
-  class{'juju':} ->
-  juju::generic_config{'root':}
+  class{'juju':}
+# ->
+#  juju::generic_config{'root':}
 }
 node 'maas1.openstack.tld',
      'maas2.openstack.tld',

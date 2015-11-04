@@ -10,7 +10,12 @@ dhcp-range=10.8.1.0,proxy
 dhcp-range=10.9.1.0,proxy
 dhcp-range=10.10.1.0,proxy
 dhcp-range=10.11.1.0,proxy
-dhcp-range=10.12.1.0,proxy'
+dhcp-range=10.12.1.0,proxy
+dhcp-range=10.13.1.0,proxy
+dhcp-range=10.14.1.0,proxy
+dhcp-range=10.15.1.0,proxy
+dhcp-range=10.16.1.0,proxy
+dhcp-range=10.17.1.0,proxy'
 
 class { 'r10k':
   version           => latest,
@@ -46,6 +51,7 @@ class { 'r10k':
       'HTTP_PORT'      => {'value' => '9000' }
     },
     ## Jenkins Plugins Added here
+    ## TODO: Peter -- We need to add in the GitHub pull request builder plugin -- https://wiki.jenkins-ci.org/display/JENKINS/GitHub+pull+request+builder+plugin
     plugin_hash        => {
       'backup' => {},
       'build-node-column' => {},

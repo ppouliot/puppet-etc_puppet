@@ -1,4 +1,3 @@
-node 'hawk.openstack.tld' {
-  warning("${fqdn} is puppet mananaged by moneypenny.openstack.tld")
-  class{'ipam':}
+node 'ipam.c2r1.openstack.tld' {
+  notice("!!!!!!!!!!!!!!!!This node is for IPAM testing!!!!!!!!!!!!!!!!!!!!!!")
 }
