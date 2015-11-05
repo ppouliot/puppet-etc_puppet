@@ -28,24 +28,50 @@ node /^(docker[0-1]).openstack.tld/{
       docker::image {'ubuntu':
         image_tag =>  ['trusty']
       }
-      docker::image{'evarga/jenkins-slave':
-        image_tag =>  ['latest']
-      }
-      docker::image{'csanchez/jenkins-swarm-slave':
-        image_tag =>  ['latest']
-      }
       docker::image{'msopenstack/sentinel-ubuntu':
         image_tag =>  ['latest']
       }
     }
     'Centos':{
       notice('Installing Centos 7 Container')
-      docker::image {'centos':
+
+      class { 'puppetdb::database::postgresql':
+        listen_addresses => '*',
+      }
+
+      docker::image{'centos':
         image_tag =>  ['centos7']
       }
+
+      docker::image{'tfhartmann/puppetdb':
+        image_tag =>  ['latest']
+      }
+
+      docker::image{'tfhartmann/puppetserver':
+        image_tag =>  ['latest']
+      }
+
+      docker::image{'camptocamp/puppetboard':
+        image_tag =>  ['latest']
+      }
+
       docker::image{'msopenstack/sentinel-centos':
         image_tag =>  ['latest']
       }
+
+
+      docker::run { 'puppetserver':
+        image           => 'tfhartmann/puppetserver:latest',
+        hostname        => 'puppet',
+        ports           => ['8140:8140'],
+      }
+      docker::run { 'puppetdb':
+        image           => 'tfhartmann/puppetdb:latest',
+        hostname        => 'puppetdb',
+        env             => ["DBHOST=${ipaddress}",'DBUSER=puppetdb','DBPASS=puppetdb'],
+        ports           => ['8080:8080','8081:8081'],
+      }
+
     }
     default:{
       warning("Unsupported ${operatingsystem}")

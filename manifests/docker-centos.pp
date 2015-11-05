@@ -72,8 +72,6 @@ node /docker-centos.*/{
     command   => 'curl -sSL https://shipyard-project.com/deploy | ACTION=node DISCOVERY=etcd://10.1.1.51:4001 bash -s',
     logoutput => true,
     timeout   => 0,
-    require   => Package['curl',]
+    require   => Package['curl'],
   }
-
-
 }

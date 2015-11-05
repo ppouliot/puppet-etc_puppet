@@ -5,22 +5,15 @@
 #
 notice("Node ${fqdn} is puppet mananaged by the OpenStack Hyper-V CI team")
 
-  case $kernel {
-    'Linux':{
 # Implement Site Wide Time Management
 class {'profiles::time':
   ntpservers => 'pool.ntp.org',
   timezone   => 'UTC',
 }
-class{'profiles::mgmt_tools':}
-  }
-  default:{
-    warning("we need to finish the windows time module so ${fqdn} can have it's time automatically set")
-  }
-}
 
 # Remote Access 
 #class{'profiles::remote_access':}
+
 #  Management Tools
 class{'profiles::mgmt_tools':}
 
