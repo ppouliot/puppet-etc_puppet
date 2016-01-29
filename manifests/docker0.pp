@@ -31,6 +31,15 @@ node /^(docker[0-1]).openstack.tld/{
       docker::image{'msopenstack/sentinel-ubuntu':
         image_tag =>  ['latest']
       }
+# Moved this instance to run on shipyard
+#      docker::image{'library/registry':
+#        image_tag =>  ['latest']
+#      }
+#      docker::run { 'docker-registry':
+#        image           => 'library/registry:latest',
+#        hostname        => 'registry',
+#        ports           => ['8140:8140'],
+#      }
     }
     'Centos':{
       notice('Installing Centos 7 Container')
@@ -88,6 +97,13 @@ node /^(docker[0-1]).openstack.tld/{
     mode    => '0777',
     source => 'puppet:///extra_files/bin/docker_remove_stale_containers.sh',
   }
+
+  file {'/root/join_shipoyard.sh':
+    ensure  => file,
+    mode    => '0777',
+    source => 'puppet:///extra_files/bin/join_shipyard.sh',
+  }
+
 
 
 #  class {'sensu':}

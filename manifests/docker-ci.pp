@@ -28,7 +28,7 @@ node /docker-ci.pouliot.net/{
     image_tag =>  ['latest']
   }
 
-  docker::image{'shipyard/deploy':
+  docker::image{'msopenstack/sentinel-ubuntu':
     image_tag =>  ['latest']
   }
   docker::run { 'jenkins':

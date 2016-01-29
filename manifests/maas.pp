@@ -64,9 +64,23 @@ node 'maas0.openstack.tld' {
 # Uncomment to use the ppa:maas-maintainers packages
     maas_maintainers_release => 'stable',
   } -> 
+  maas::superuser{ 'lis_ci_admin':
+    password => 'maas',
+    email    => 'nmeier@microsoft.com',
+    require  => Package['maas'],
+  } ->
+  maas::superuser{ 'galera_admin':
+    password => 'maas',
+    email    => 'ppouliot@microsoft.com',
+    require  => Package['maas'],
+  } ->
+
+
   class{'juju':}
+
 # ->
 #  juju::generic_config{'root':}
+  class{'dell_openmanage::repository':}
 }
 node 'maas1.openstack.tld',
      'maas2.openstack.tld',

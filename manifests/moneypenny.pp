@@ -15,7 +15,9 @@ dhcp-range=10.13.1.0,proxy
 dhcp-range=10.14.1.0,proxy
 dhcp-range=10.15.1.0,proxy
 dhcp-range=10.16.1.0,proxy
-dhcp-range=10.17.1.0,proxy'
+dhcp-range=10.17.1.0,proxy
+dhcp-range=10.18.1.0,proxy
+dhcp-range=10.19.1.0,proxy'
 
 class { 'r10k':
   version           => latest,
