@@ -90,7 +90,11 @@ node 'maas1.openstack.tld',
      'maas6.openstack.tld',
      'maas7.openstack.tld',
      'maas8.openstack.tld',
-     'maas9.openstack.tld'{
+     'maas9.openstack.tld',
+     'maas10.openstack.tld',
+     'maas11.openstack.tld',
+     'maas12.openstack.tld',
+     'maas13.openstack.tld'{
 
   class{'maas::cluster_controller':
     cluster_region_controller => '10.5.1.39',
