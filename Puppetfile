@@ -91,7 +91,7 @@ mod 'accounts',        :git => "#{base_url}/puppetlabs/puppetlabs-accounts",    
 #mod 'ciscopuppet',     :git => "#{base_url}/cisco/cisco-network-puppet-module",     :tag => 'v1.0.0' #SUPPORTED
 #mod 'f5',              :git => "#{base_url}/puppetlabs/puppetlabs-f5",              :tag => '1.0.0' #SUPPORTED #WINDOWS
 #mod 'sqlserver',       :git => "#{base_url}/puppetlabs/puppetlabs-sqlserver",       :tag => '1.0.0' #SUPPORTED #WINDOWS
-mod 'sensu',         :git => "#{base_url}/sensu/sensu-puppet",         :tag => 'v2.1.0'  #APPROVED
+mod 'sensu',         :git => "#{base_url}/sensu/sensu-puppet",         :tag => 'v1.5.5'  #APPROVED
 mod 'epel',          :git => "#{base_url}/stahnma/puppet-module-epel", :tag => '1.2.2' #APPROVED
 mod 'python',        :git => "#{base_url}/stankevich/puppet-python",   :tag => '1.11.0'      #APPROVED
 mod 'logrotate',     :git => "#{base_url}/rodjek/puppet-logrotate",    :tag => 'v1.0.2'       #APPROVED
