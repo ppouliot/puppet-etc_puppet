@@ -10,13 +10,8 @@ node /^(docker[0-1]).openstack.tld/{
 #    ui_pass   => 'jenkins',
 #  }
 
-  vcsrepo{'/usr/local/src/dockerfile-ubuntu_jenkins-slave':
-    ensure   => absent,
-    provider => git,
-    source   => 'https://github.com/ppouliot/dockerfile-ubuntu_jenkins-slave.git'
-  }
   vcsrepo{'/usr/local/src/dockerfile-sentinel-all':
-    ensure   => present,
+    ensure   => latest,
     provider => git,
     source   => 'https://github.com/openstack-hyper-v/dockerfile-sentinel-all.git'
   }
@@ -24,29 +19,20 @@ node /^(docker[0-1]).openstack.tld/{
 
   case $operatingsystem {
     'Ubuntu':{
-      notice('Installing Ubuntu Trusty Container')
+      notice('This ubuntu container host executes Ubuntu Based container jobs')
       docker::image {'ubuntu':
         image_tag =>  ['trusty']
       }
       docker::image{'msopenstack/sentinel-ubuntu':
         image_tag =>  ['latest']
       }
-# Moved this instance to run on shipyard
-#      docker::image{'library/registry':
-#        image_tag =>  ['latest']
-#      }
-#      docker::run { 'docker-registry':
-#        image           => 'library/registry:latest',
-#        hostname        => 'registry',
-#        ports           => ['8140:8140'],
-#      }
     }
     'Centos':{
-      notice('Installing Centos 7 Container')
+      notice('This centos container hosts runs a local postgresql server, operations production puppet infra containers, and executes centos based contianer jobs.')
 
-      class { 'puppetdb::database::postgresql':
-        listen_addresses => '*',
-      }
+#      class { 'puppetdb::database::postgresql':
+#        listen_addresses => '*',
+#      }
 
       docker::image{'centos':
         image_tag =>  ['centos7']

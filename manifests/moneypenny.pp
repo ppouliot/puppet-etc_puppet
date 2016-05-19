@@ -115,16 +115,16 @@ class { 'r10k':
   }
   # jenkins application user configuration
   # This creates a jenkins user account
-  jenkins::user {'jenkins':
-    email    => "jenkins@${fqdn}",
-    password => 'jenkins',
-    public_key => 'ssh-dss AAAAB3NzaC1kc3MAAACBAKyFaUB2hgqiqlj9CMNN6k/SzBTWid07GOHAztQmgreAqdAH8J2Qae+Idq5YQJEZrLi4CCIHe0kPkqFveIZedELYgcLVqIFtVzypLCESySirBp3wM/o7gJgPraKOoJcfygC+WbAEpI12KL8e6DmpZmnLNicWgcFc3xUUC+MsvF8ZAAAAFQCANfgIk7cFFHkacEh3BXksJRGuNQAAAIEAoCOsEzH+0QYMq4Llc7p15pPc59nXIUd/BDUCu87diBqNvQcBPpZXBlmk9tJeEOytjbZs0PKm1izuYFbxISZl4SkcrsA/t3VhHaAXxQSthqfTNiQtqUvE2QDoi+u1LW2P/DnKCAO/oeWjMmNyUapv91ZY1iM6+kYMM7z1EMqs+t4AAACAei66Ns/cARNtYtFZzv1yamdfAInsZIQDvvfeF5PwXwqtFUKBP6o5+jxDQi/OWo/GuTP0wB76Fak2DoyP+jEdtn/m3t2aTmsjiKCvzyjlz3YiZNvCctZuatd9D0NfEj+8iLVovGx5jlz7e+nhxxzjwCggEbgHJh/NbRrFSW8DWbQ= root@norman',
-  }
+#  Jenkins::User {'jenkins':
+#    email    => "jenkins@${fqdn}",
+#    password => 'jenkins',
+#    public_key => 'ssh-dss AAAAB3NzaC1kc3MAAACBAKyFaUB2hgqiqlj9CMNN6k/SzBTWid07GOHAztQmgreAqdAH8J2Qae+Idq5YQJEZrLi4CCIHe0kPkqFveIZedELYgcLVqIFtVzypLCESySirBp3wM/o7gJgPraKOoJcfygC+WbAEpI12KL8e6DmpZmnLNicWgcFc3xUUC+MsvF8ZAAAAFQCANfgIk7cFFHkacEh3BXksJRGuNQAAAIEAoCOsEzH+0QYMq4Llc7p15pPc59nXIUd/BDUCu87diBqNvQcBPpZXBlmk9tJeEOytjbZs0PKm1izuYFbxISZl4SkcrsA/t3VhHaAXxQSthqfTNiQtqUvE2QDoi+u1LW2P/DnKCAO/oeWjMmNyUapv91ZY1iM6+kYMM7z1EMqs+t4AAACAei66Ns/cARNtYtFZzv1yamdfAInsZIQDvvfeF5PwXwqtFUKBP6o5+jxDQi/OWo/GuTP0wB76Fak2DoyP+jEdtn/m3t2aTmsjiKCvzyjlz3YiZNvCctZuatd9D0NfEj+8iLVovGx5jlz7e+nhxxzjwCggEbgHJh/NbRrFSW8DWbQ= root@norman',
+#  }
   # This should allow the jenkins user to work with local apache,
   # tftp, and other admin daemons that are running
-  user { 'jenkins':
-   groups => ['www-data', 'tftp', 'adm'],
-  }
+#  user { 'jenkins':
+#   groups => ['www-data', 'tftp', 'adm'],
+#  }
 
 #  class {'jenkins_security':
 #    require => Class['jenkins'],

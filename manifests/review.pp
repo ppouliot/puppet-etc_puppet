@@ -5,11 +5,11 @@ node 'review.openstack.tld' {
     owner  => 'gerrit',
     group => 'gerrit',
   }
-  staging::file{'gerrit-2.11.war':
-    source => 'https://gerrit-releases.storage.googleapis.com/gerrit-2.11.war',
+  staging::file{'gerrit-2.12.2.war':
+    source => 'https://gerrit-releases.storage.googleapis.com/gerrit-2.12.2.war',
   }
   class{'gerrit':
-    source => '/opt/gerrit/gerrit-2.11.war',
+    source => '/opt/gerrit/gerrit-2.12.2.war',
     target => '/opt/gerrit',
   }
 }

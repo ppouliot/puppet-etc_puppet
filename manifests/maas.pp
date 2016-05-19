@@ -75,6 +75,22 @@ node 'maas0.openstack.tld' {
     require  => Package['maas'],
   } ->
 
+  maas::superuser{ 'cloudbaseinit_ci_admin':
+    password => 'maas',
+    email    => 'ociuhandu@cloudbasesolutions.com',
+    require  => Package['maas'],
+  } ->
+
+  vcsrepo{'/usr/local/src/pywinrm':
+    ensure   => latest,
+    provider => git,
+    source   => 'https://github.com/cloudbase/pywinrm',
+  }
+  package{[
+    'amtterm',
+    'wsmancli']:
+    ensure => latest,
+  }
 
   class{'juju':}
 
@@ -94,8 +110,15 @@ node 'maas1.openstack.tld',
      'maas10.openstack.tld',
      'maas11.openstack.tld',
      'maas12.openstack.tld',
-     'maas13.openstack.tld'{
+     'maas13.openstack.tld',
+     'maas14.openstack.tld'{
 
+  package{[
+    'amtterm',
+    'wsmancli',
+    'libvirt-bin']:
+    ensure => latest,
+  }
   class{'maas::cluster_controller':
     cluster_region_controller => '10.5.1.39',
   }

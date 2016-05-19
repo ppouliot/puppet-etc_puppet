@@ -34,6 +34,4 @@ node /^(oddjob[0-1]).openstack.tld/{
     mode   => '0777',
   }
   # End
-  # End
-  # End
 }

@@ -1,5 +1,5 @@
 node /shipyard.openstack.tld/{
-
+  notice("This Shipyard Host runs Production CI Containers and is managed by puppet")
   user { 'jenkins':
     ensure           => 'present',
     comment          => 'Jenkins,,,',
@@ -10,7 +10,7 @@ node /shipyard.openstack.tld/{
     password_min_age => '0',
     shell            => '/bin/bash',
     uid              => '113',
-  }
+  } ->
   group { 'jenkins':
     ensure => 'present',
     gid    => '120',
@@ -52,8 +52,10 @@ node /shipyard.openstack.tld/{
   }
 
   docker::run { 'jenkins-master':
-    image           => 'library/jenkins:latest',
+#    image           => 'library/jenkins:latest',
+    image           => 'msopenstack/jenkins-master',
     ports           => ['9000:8080','50000:50000'],
+    volumes         => ['/var/jenkins_home'],
     hostname        => 'jenkins-master',
     require         => User['jenkins'],
     restart_service => true,
