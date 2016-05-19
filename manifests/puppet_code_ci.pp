@@ -774,10 +774,10 @@ node 'c2-r13-u13' {
     mode    => '0777',
   } ->
   exec{'virtual_clone_drive_mount_windows_8.1_x64_291902.iso':
-    command    => '"C:\Program Files(x86)\Elaborate Bytes\VirtualCloneDrive\daemon.exe" -mount 0 "c:\programdata\windows_isos\en_windows_8_1_enterprise_x64_dvd_2971902.iso"',
+    command    => '"C:\Program Files (x86)\Elaborate Bytes\VirtualCloneDrive\Daemon.exe" -mount 0 "c:\programdata\windows_isos\en_windows_8_1_enterprise_x64_dvd_2971902.iso"',
     cwd        => 'c:\programdata\windows_isos',
     logoutput  => true,
-    require    => Package['virtualclonedrive'],
+    require    => Package['VirtualCloneDrive'],
   }
 #  exec {'virtual_clone_drive_mount_windows_iso':
 #    command => 'for %%f in (%1\*.iso) do "C:\Program Files(x86)\Elaborate Bytes\VirtualCloneDrive\daemon.exe" -mount 0 "%%f"',
