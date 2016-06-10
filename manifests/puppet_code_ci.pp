@@ -81,6 +81,27 @@ node 'c2-r13-u09' {
     plugin_hash                          => {
       'antisamy-markup-formatter'        => { 'version' => 'latest' },
       'backup'                           => { 'version' => 'latest' },
+      'build-alias-setter'               => { 'version' => 'latest' },
+      'build-blocker-plugin'             => { 'version' => 'latest' },
+      'build-cause-run-condition'        => { 'version' => 'latest' },
+      'build-env-propagator'             => { 'version' => 'latest' },
+      'build-environment'                => { 'version' => 'latest' },
+      'build-failure-analyzer'           => { 'version' => 'latest' },
+      'build-flow-extensions-plugin'     => { 'version' => 'latest' },
+      'build-flow-plugin'                => { 'version' => 'latest' },
+      'build-flow-test-aggregator'       => { 'version' => 'latest' },
+      'build-flow-toolbox-plugin'        => { 'version' => 'latest' },
+      'build-history-metrics-plugin'     => { 'version' => 'latest' },
+      'build-keeper-plugin'              => { 'version' => 'latest' },
+      'build-line'                       => { 'version' => 'latest' },
+      'build-metrics'                    => { 'version' => 'latest' },
+      'build-monitor-plugin'             => { 'version' => 'latest' },
+      'build-name-setter'                => { 'version' => 'latest' },
+      'build-pipeline-plugin'            => { 'version' => 'latest' },
+      'build-publish'                    => { 'version' => 'latest' },
+      'build-requester'                  => { 'version' => 'latest' },
+      'build-timeout'                    => { 'version' => 'latest' },
+      'build-timestamp'                    => { 'version' => 'latest' },
       'build-view-column'                => { 'version' => 'latest' },
       'built-on-column'                  => { 'version' => 'latest' },
       'credentials'                      => { 'version' => 'latest' },
@@ -706,6 +727,7 @@ node 'c2-r13-u13' {
     'wget',
     'curl',
     'rsync',
+    'unzip',
     'notepadplusplus',
     'putty',
     'winrar',
@@ -767,7 +789,20 @@ node 'c2-r13-u13' {
   ]:
     ensure => directory,
   }
-  
+  class{'staging':
+    path    => 'C:/programdata/staging',
+    owner   => 'Administrator',
+    group   => 'Administrator',
+    mode    => '0777',
+    require => Package['unzip'],
+  } -> 
+
+  staging::file{'virtio-win.iso':
+    source  => 'https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso',
+    timeout => 0,
+  }
+
+
   file { 'c:\programdata\windows_isos\en_windows_8_1_enterprise_x64_dvd_2971902.iso':
     ensure  => 'file',
     content => '{md5}8e194185fcce4ea737f274ee9005ddf0',
@@ -779,6 +814,16 @@ node 'c2-r13-u13' {
     logoutput  => true,
     require    => Package['VirtualCloneDrive'],
   }
+
+  exec{'virtual_clone_drive_unmount':
+    command     => '"C:\Program Files (x86)\Elaborate Bytes\VirtualCloneDrive\Daemon.exe" -mount 0',
+    cwd         => 'c:\programdata\windows_isos',
+    logoutput   => true,
+    require     => Package['VirtualCloneDrive'],
+    refreshonly => true,
+  }
+
+
 #  exec {'virtual_clone_drive_mount_windows_iso':
 #    command => 'for %%f in (%1\*.iso) do "C:\Program Files(x86)\Elaborate Bytes\VirtualCloneDrive\daemon.exe" -mount 0 "%%f"',
 #  }

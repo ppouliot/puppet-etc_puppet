@@ -1,0 +1,407 @@
+diff --git a/manifests/puppet_code_ci.pp b/manifests/puppet_code_ci.pp
+index 119c3c6..1252524 100644
+--- a/manifests/puppet_code_ci.pp
++++ b/manifests/puppet_code_ci.pp
+@@ -81,6 +81,27 @@ node 'c2-r13-u09' {
+     plugin_hash                          => {
+       'antisamy-markup-formatter'        => { 'version' => 'latest' },
+       'backup'                           => { 'version' => 'latest' },
++      'build-alias-setter'               => { 'version' => 'latest' },
++      'build-blocker-plugin'             => { 'version' => 'latest' },
++      'build-cause-run-condition'        => { 'version' => 'latest' },
++      'build-env-propagator'             => { 'version' => 'latest' },
++      'build-environment'                => { 'version' => 'latest' },
++      'build-failure-analyzer'           => { 'version' => 'latest' },
++      'build-flow-extensions-plugin'     => { 'version' => 'latest' },
++      'build-flow-plugin'                => { 'version' => 'latest' },
++      'build-flow-test-aggregator'       => { 'version' => 'latest' },
++      'build-flow-toolbox-plugin'        => { 'version' => 'latest' },
++      'build-history-metrics-plugin'     => { 'version' => 'latest' },
++      'build-keeper-plugin'              => { 'version' => 'latest' },
++      'build-line'                       => { 'version' => 'latest' },
++      'build-metrics'                    => { 'version' => 'latest' },
++      'build-monitor-plugin'             => { 'version' => 'latest' },
++      'build-name-setter'                => { 'version' => 'latest' },
++      'build-pipeline-plugin'            => { 'version' => 'latest' },
++      'build-publish'                    => { 'version' => 'latest' },
++      'build-requester'                  => { 'version' => 'latest' },
++      'build-timeout'                    => { 'version' => 'latest' },
++      'build-timestamp'                    => { 'version' => 'latest' },
+       'build-view-column'                => { 'version' => 'latest' },
+       'built-on-column'                  => { 'version' => 'latest' },
+       'credentials'                      => { 'version' => 'latest' },
+@@ -706,6 +727,7 @@ node 'c2-r13-u13' {
+     'wget',
+     'curl',
+     'rsync',
++    'unzip',
+     'notepadplusplus',
+     'putty',
+     'winrar',
+@@ -767,7 +789,20 @@ node 'c2-r13-u13' {
+   ]:
+     ensure => directory,
+   }
+-  
++  class{'staging':
++    path    => 'C:/programdata/staging',
++    owner   => 'Administrator',
++    group   => 'Administrator',
++    mode    => '0777',
++    require => Package['unzip'],
++  } -> 
++
++  staging::file{'virtio-win.iso':
++    source  => 'https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso',
++    timeout => 0,
++  }
++
++
+   file { 'c:\programdata\windows_isos\en_windows_8_1_enterprise_x64_dvd_2971902.iso':
+     ensure  => 'file',
+     content => '{md5}8e194185fcce4ea737f274ee9005ddf0',
+@@ -779,6 +814,16 @@ node 'c2-r13-u13' {
+     logoutput  => true,
+     require    => Package['VirtualCloneDrive'],
+   }
++
++  exec{'virtual_clone_drive_unmount':
++    command     => '"C:\Program Files (x86)\Elaborate Bytes\VirtualCloneDrive\Daemon.exe" -mount 0',
++    cwd         => 'c:\programdata\windows_isos',
++    logoutput   => true,
++    require     => Package['VirtualCloneDrive'],
++    refreshonly => true,
++  }
++
++
+ #  exec {'virtual_clone_drive_mount_windows_iso':
+ #    command => 'for %%f in (%1\*.iso) do "C:\Program Files(x86)\Elaborate Bytes\VirtualCloneDrive\daemon.exe" -mount 0 "%%f"',
+ #  }
+diff --git a/manifests/vpn.pp b/manifests/vpn.pp
+index 4c28a5b..2e75501 100644
+--- a/manifests/vpn.pp
++++ b/manifests/vpn.pp
+@@ -1,32 +1,10 @@
+-node 'eth0-c2-r3-u29' {
++node /vpn.*/ {
++#  class {'basenode':}
++#  class {'basenode::dhcp2static':}
++  class {'sensu':}
++  class{'sensu_client_plugins': require => Class['sensu'],}
+   package {'bridge-utils':
+     ensure => latest,
+-  } ->
+-  firewall { '100 snat for network openvpn':
+-    chain    => 'POSTROUTING',
+-    jump     => 'MASQUERADE',
+-    proto    => 'all',
+-    outiface => "eth0",
+-    source   => '10.253.253.0/24',
+-    table    => 'nat',
+-  } ->
+-  firewall {'200 INPUT allow DNS':
+-    action => accept,
+-    proto  => 'udp',
+-    sport  => 'domain'
+-  } ->
+-#  file {'/etc/quagga/zebra.conf':
+-#    ensure  => file,
+-#    owner   => 'quagga',
+-#    group   => 'quagga',
+-#    mode    => '0640',
+-#    source  => 'puppet:///extra_files/vpn/zebra.conf',
+-#    notify  => Service['zebra'],
+-#    require => Class['quagga'],
+-#    before  => Service['zebra'],
+-#  } ->
+-  class {'quagga':
+-#    ospfd_source => 'puppet:///extra_files/vpn/ospfd.conf',
+   }
+   openvpn::server{'hypervci':
+     country      => 'US',
+@@ -48,4 +26,236 @@ node 'eth0-c2-r3-u29' {
+                     ],
+ #    push         => ['route 10.21.7.0 255.255.255.0'],
+   }
++
++  firewall { '100 snat for network openvpn':
++    chain    => 'POSTROUTING',
++    jump     => 'MASQUERADE',
++    proto    => 'all',
++    outiface => "eth0",
++    source   => '10.253.253.0/24',
++    table    => 'nat',
++  }
++  firewall {'200 INPUT allow DNS':
++    action => accept,
++    proto  => 'udp',
++    sport  => 'domain'
++  }
++
++  openvpn::client {'ppouliot':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++  openvpn::client {'nmeier':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++  openvpn::client {'trogers':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++  openvpn::client {'habdi':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++  openvpn::client {'cloudbase':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++  openvpn::client {'apilotti':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++  openvpn::client {'gsamfira':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++  openvpn::client {'vbud':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++  openvpn::client {'avladu':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++  openvpn::client {'cnesa':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++  openvpn::client {'alinserdean':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++  openvpn::client {'gloewen':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++  openvpn::client {'seansp':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++  openvpn::client {'lloydj':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++  openvpn::client {'cbelu':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++  openvpn::client {'lpetrut':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++  openvpn::client {'dinoc':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++  openvpn::client {'ibalutoiu':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++  openvpn::client {'BArmstrong':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++
++# cgalan@cloudbasesolutions.com
++  openvpn::client {'cgalan':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++#nherciu@cloudbasesolutions.com
++  openvpn::client {'nherciu':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++#abalutoiu@cloudbasesolutions.com
++  openvpn::client {'abalutoiu':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++#abacos@cloudbasesolutions.com
++  openvpn::client {'aBacos':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++#rbuzatu@cloudbasesolutions.com
++  openvpn::client {'rbuzatu':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++#v-tomazi@microsoft.com
++  openvpn::client {'tomazi':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++#qings@microsoft.com
++#  openvpn::client {'qings':
++#    server => 'hypervci',
++#    remote_host => '64.119.130.115',
++#  }
++
++#msasci@microsoft.com
++  openvpn::client {'msasci':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++
++#alexng@microsoft.com
++  openvpn::client {'alexng':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++
++#vyadav@microsoft.com
++  openvpn::client {'vyadav':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++
++#sixiao@microsoft.com
++  openvpn::client {'sixiao':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++
++#v-chvale@microsoft.com
++  openvpn::client {'v-chvale':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++
++#Dorian Barboiu v-dobarb@microsoft.com
++  openvpn::client {'v-dobarb':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++
++#v-dopasl@microsoft.com
++  openvpn::client {'v-dopasl':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++
++#v-zsduda@microsoft.com
++  openvpn::client {'v-zsduda':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++#v-sovin@microsoft.com
++  openvpn::client {'v-sovin':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++# Adelina Tuvenie - atuvenie@cloudbasesolutions.com
++  openvpn::client {'atuvenie':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++
++#mgheorghe@cloudbasesolutions.com
++# Mihai Gheorghe - mgheorghe@cloudbasesolutions.com
++  openvpn::client {'mgheorghe':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++
++#acoman@cloudbasesolutions.com
++# Alexandru Coman acoman@cloudbasesolutions.com
++  openvpn::client {'acoman':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  } 
++
++# Adrian Suhov v-adsuho@microsoft.com
++  openvpn::client {'v-adsuho':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  } 
++
++# Ovidiu Rusu 
++# v-ovrusu@microsoft.com
++  openvpn::client {'v-ovrusu':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++# Paula Crismaru
++# v-pacris@microsoft.com
++  openvpn::client {'v-pacris':
++    server => 'hypervci',
++    remote_host => '64.119.130.115',
++  }
++
++  class {'quagga':
++    ospfd_source => 'puppet:///extra_files/ospfd.conf',
++  }
++#  file {'/etc/quagga/zebra.conf':
++#    ensure  => file,
++#    owner   => 'quagga',
++#    group   => 'quagga',
++#    mode    => '0640',
++#    source  => 'puppet:///extra_files/zebra.conf',
++#    notify  => Service['zebra'],
++#    require => Class['quagga'],
++#    before  => Service['zebra'],
++#  }
+ }
+diff --git a/puppet.conf b/puppet.conf
+index 94c2f1e..42fad9f 100644
+--- a/puppet.conf
++++ b/puppet.conf
+@@ -4,7 +4,7 @@ vardir=/var/lib/puppet
+ ssldir=/var/lib/puppet/ssl
+ rundir=/var/run/puppet
+ factpath=$vardir/lib/facter
+-environmentpath = $confdir/environments
++environmentpath = /etc/puppet/environments
+ basemodulepath = $confdir/modules:/etc/puppet/environments/production/modules:/etc/puppet/modules
+ default_manifest = $confdir/manifests
+ 
+@@ -17,6 +17,11 @@ reports = store
+ hiera_config = /etc/puppet/hiera.yaml
+ digest_algorithm = md5
+ pluginsync = true
+-parser = future
++parser = current
+ dns_alt_names = puppet
+ autosign = true
++certname = moneypenny.openstack.tld
++always_cache_features = false
++
++[agent]
++postrun_command = r10k deploy environment -p
+diff --git a/r10k.yaml b/r10k.yaml
+deleted file mode 100644
+index a77c123..0000000
+--- a/r10k.yaml
++++ /dev/null
+@@ -1,14 +0,0 @@
+-:cachedir: /var/cache/r10k
+-:sources:
+-  :puppetfiles:
+-    remote: https://github.com/ppouliot/puppet-Puppetfile_Env
+-    basedir: /etc/puppet/environments
+-  :hiera:
+-    remote: https://github.com/ppouliot/puppet-hieradata
+-    basedir: /etc/puppet/hiera
+-# :github-with-password-example:
+-#    remote: https://bwayne:batman2014@github.com/openstack-hyper-v/puppet-hieradata
+-#    basedir: /etc/puppet/hiera
+-#:purgedirs:
+-#  - /etc/puppet/environments
+-#  - /etc/puppet/hiera
+diff --git a/secure/keys/README.md b/secure/keys/README.md
+old mode 100644
+new mode 100755

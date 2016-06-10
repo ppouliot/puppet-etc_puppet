@@ -1,0 +1,14 @@
+:cachedir: /var/cache/r10k
+:sources:
+  :puppetfiles:
+    remote: https://github.com/ppouliot/puppet-Puppetfile_Env
+    basedir: /etc/puppet/environments
+  :hiera:
+    remote: https://github.com/ppouliot/puppet-hieradata
+    basedir: /etc/puppet/hiera
+# :github-with-password-example:
+#    remote: https://bwayne:batman2014@github.com/openstack-hyper-v/puppet-hieradata
+#    basedir: /etc/puppet/hiera
+#:purgedirs:
+#  - /etc/puppet/environments
+#  - /etc/puppet/hiera
