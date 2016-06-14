@@ -80,6 +80,7 @@ node 'c2-r13-u09' {
     },
     plugin_hash                          => {
       'antisamy-markup-formatter'        => { 'version' => 'latest' },
+      'ansiolor'                         => { 'version' => 'latest' },
       'backup'                           => { 'version' => 'latest' },
       'build-alias-setter'               => { 'version' => 'latest' },
       'build-blocker-plugin'             => { 'version' => 'latest' },
@@ -754,7 +755,7 @@ node 'c2-r13-u13' {
   } ->
   windows_env{'JAVA_HOME=C:\Program Files (x86)\Java\jre1.8.0_77':}
   # Cloudbase Windows OpenStack Imaging Tools
-  vcsrepo{'c:/programdata/windows-openstack-imaging-tools':
+  vcsrepo{'c:\Program Files\WindowsPowershell\Modules\windows-openstack-imaging-tools':
     source   => 'https://github.com/cloudbase/windows-openstack-imaging-tools',
     provider => git,
     ensure   => present,
@@ -763,13 +764,13 @@ node 'c2-r13-u13' {
   exec{'unblock-windows_openstack_imaging_tools':
     command   => 'dir * |Unblock-File',
     provider  => powershell,
-    cwd       => 'c:/programdata/windows-openstack-imaging-tools',
+    cwd       => 'c:\Program Files\WindowsPowershell\Modules\windows-openstack-imaging-tools',
     logoutput => true,
   } ->
   exec{'unblock-windows_openstack_imaging_tools_bin':
     command   => 'dir * |Unblock-File',
     provider  => powershell,
-    cwd       => 'c:/programdata/windows-openstack-imaging-tools/bin',
+    cwd       => 'c:\Program Files\WindowsPowershell\Modules\windows-openstack-imaging-tools\bin',
     logoutput => true,
   }
 
