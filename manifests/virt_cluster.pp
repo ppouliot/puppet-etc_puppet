@@ -143,38 +143,34 @@ node 'eth0-c2-r13-u07','eth0-c2-r13-u11' {
     volume_group => 'vg_drbd_ocfs2',
     size         => '850G',
   }
-#  class{'drbd':} ->
+#  class{'drbd':
+#  } ->
+ include ::drbd
 
-#  drbd::resource{'r0':
-#    protocol      => 'C',
-#    device        => '/dev/drbd0',
-#    disk          => '/dev/mapper/vg_drbd_ocfs2-lv_drbd_etc_libvirt_qemu',
-#    secret        => 'secret',
-#    verify_alg    => 'sha1',
-#    host1         => 'eth0-c2-r13-u07',
-#    host2         => 'eth0-c2-r13-u11',
-#    ip1           => '10.13.2.7',
-#    ip2           => '10.13.2.11',
-#    port          => 7788,
-#    manage        => true,
-#    ha_primary    => true,
-#    initial_setup => true,
-#    require       => Logical_volume['lv_drbd_etc_libvirt_qemu']
-#  }
-#  drbd::resource{'r1':
-#    protocol      => 'C',
-#    host1         => 'eth0-c2-r13-u07',
-#    host2         => 'eth0-c2-r13-u11',
-#    ip1           => '10.13.2.7',
-#    ip2           => '10.13.2.11',
-#    disk          => '/dev/mapper/vg_drbd_ocfs2-lv_drbd_var_libvirt_images',
-#    port          => 7789,
-#    device        => '/dev/drbd1',
-#    manage        => false,
-#    verify_alg    => 'sha1',
-#    ha_primary    => true,
-#    initial_setup => true,
-#    require       => Logical_volume['lv_drbd_etc_libvirt_qemu']
-#  }
+  drbd::resource{'r0':
+    device        => '/dev/drbd0',
+    disk          => '/dev/mapper/vg_drbd_ocfs2-lv_drbd_etc_libvirt_qemu',
+    secret        => 'secret',
+    host1         => 'eth0-c2-r13-u07',
+    host2         => 'eth0-c2-r13-u11',
+    ip1           => '10.13.2.7',
+    ip2           => '10.13.2.11',
+    port          => 7788,
+    ha_primary    => true,
+    initial_setup => true,
+    require       => Logical_volume['lv_drbd_etc_libvirt_qemu']
+  }
+  drbd::resource{'r1':
+    device        => '/dev/drbd1',
+    disk          => '/dev/mapper/vg_drbd_ocfs2-lv_drbd_var_libvirt_images',
+    host1         => 'eth0-c2-r13-u07',
+    host2         => 'eth0-c2-r13-u11',
+    ip1           => '10.13.2.7',
+    ip2           => '10.13.2.11',
+    port          => 7789,
+    ha_primary    => true,
+    initial_setup => true,
+    require       => Logical_volume['lv_drbd_etc_libvirt_qemu']
+  }
   
 }
