@@ -61,9 +61,9 @@ branch_name  = 'origin/mitaka'
 
 openstack_repo_prefix = "#{base_url}/#{openstack_module_account}/puppet"
 mod 'hiera',        :git => "#{base_url}/hunner/puppet-hiera", :tag => '2.0.1' #PRODUCTION #SUPPORTED
-mod 'stdlib',          :git => "#{base_url}/puppetlabs/puppetlabs-stdlib",          :tag => '4.11.0' #SUPPORTED
+mod 'stdlib',          :git => "#{base_url}/puppetlabs/puppetlabs-stdlib",          :tag => '4.12.0' #SUPPORTED
 mod 'vcsrepo',         :git => "#{base_url}/puppetlabs/puppetlabs-vcsrepo",         :tag => '1.3.2' #SUPPORTED
-mod 'apt',             :git => "#{base_url}/puppetlabs/puppetlabs-apt",             :tag => '2.2.1' #SUPPORTED
+mod 'apt',             :git => "#{base_url}/puppetlabs/puppetlabs-apt",             :tag => '2.2.2' #SUPPORTED
 mod 'concat',          :git => "#{base_url}/puppetlabs/puppetlabs-concat",          :tag => '2.1.0' #SUPPORTED
 mod 'motd',            :git => "#{base_url}/puppetlabs/puppetlabs-motd",            :tag => '1.4.0' #SUPPORTED
 mod 'firewall',        :git => "#{base_url}/puppetlabs/puppetlabs-firewall",        :tag => '1.8.0' #SUPPORTED
