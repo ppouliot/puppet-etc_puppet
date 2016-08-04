@@ -64,31 +64,34 @@ mod 'hiera',        :git => "#{base_url}/hunner/puppet-hiera", :tag => '2.0.1' #
 mod 'stdlib',          :git => "#{base_url}/puppetlabs/puppetlabs-stdlib",          :tag => '4.12.0' #SUPPORTED
 mod 'vcsrepo',         :git => "#{base_url}/puppetlabs/puppetlabs-vcsrepo",         :tag => '1.3.2' #SUPPORTED
 mod 'apt',             :git => "#{base_url}/puppetlabs/puppetlabs-apt",             :tag => '2.2.2' #SUPPORTED
-mod 'concat',          :git => "#{base_url}/puppetlabs/puppetlabs-concat",          :tag => '2.1.0' #SUPPORTED
+mod 'concat',          :git => "#{base_url}/puppetlabs/puppetlabs-concat",          :tag => '2.2.0' #SUPPORTED
 mod 'motd',            :git => "#{base_url}/puppetlabs/puppetlabs-motd",            :tag => '1.4.0' #SUPPORTED
-mod 'firewall',        :git => "#{base_url}/puppetlabs/puppetlabs-firewall",        :tag => '1.8.0' #SUPPORTED
-mod 'apache',          :git => "#{base_url}/puppetlabs/puppetlabs-apache",          :tag => '1.8.1' #SUPPORTED
-mod 'inifile',         :git => "#{base_url}/puppetlabs/puppetlabs-inifile",         :tag => '1.4.3' #SUPPORTED
-mod 'mysql',           :git => "#{base_url}/puppetlabs/puppetlabs-mysql",           :tag => '3.6.2' #SUPPORTED
-mod 'postgresql',      :git => "#{base_url}/puppetlabs/puppetlabs-postgresql",      :tag => '4.7.1' #SUPPORTED
-mod 'ntp',             :git => "#{base_url}/puppetlabs/puppetlabs-ntp",             :tag => '4.1.2' #SUPPORTED
-mod 'java',            :git => "#{base_url}/puppetlabs/puppetlabs-java",            :tag => '1.4.3' #SUPPORTED
-mod 'haproxy',         :git => "#{base_url}/puppetlabs/puppetlabs-haproxy",         :tag => '1.4.0' #SUPPORTED
+mod 'firewall',        :git => "#{base_url}/puppetlabs/puppetlabs-firewall",        :tag => '1.8.1' #SUPPORTED
+mod 'apache',          :git => "#{base_url}/puppetlabs/puppetlabs-apache",          :tag => '1.10.0' #SUPPORTED
+mod 'inifile',         :git => "#{base_url}/puppetlabs/puppetlabs-inifile",         :tag => '1.5.0' #SUPPORTED
+mod 'mysql',           :git => "#{base_url}/puppetlabs/puppetlabs-mysql",           :tag => '3.8.0' #SUPPORTED
+mod 'postgresql',      :git => "#{base_url}/puppetlabs/puppetlabs-postgresql",      :tag => '4.8.0' #SUPPORTED
+mod 'ntp',             :git => "#{base_url}/puppetlabs/puppetlabs-ntp",             :tag => '4.2.0' #SUPPORTED
+mod 'java',            :git => "#{base_url}/puppetlabs/puppetlabs-java",            :tag => '1.6.0' #SUPPORTED
+mod 'haproxy',         :git => "#{base_url}/puppetlabs/puppetlabs-haproxy",         :tag => '1.5.0' #SUPPORTED
 mod 'java_ks',         :git => "#{base_url}/puppetlabs/puppetlabs-java_ks",         :tag => '1.4.1' #SUPPORTED
 mod 'tomcat',          :git => "#{base_url}/puppetlabs/puppetlabs-tomcat",          :tag => '1.4.1' #SUPPORTED
-mod 'powershell',      :git => "#{base_url}/puppetlabs/puppetlabs-powershell",      :tag => '1.0.6' #SUPPORTED #WINDOWS
+mod 'powershell',      :git => "#{base_url}/puppetlabs/puppetlabs-powershell",      :tag => '2.0.2' #SUPPORTED #WINDOWS
 mod 'registry',        :git => "#{base_url}/puppetlabs/puppetlabs-registry",        :tag => '1.1.3' #SUPPORTED #WINDOWS
 mod 'reboot',          :git => "#{base_url}/puppetlabs/puppetlabs-reboot",          :tag => '1.2.1' #SUPPORTED #WINDOWS
 mod 'acl',             :git => "#{base_url}/puppetlabs/puppetlabs-acl",             :tag => '1.1.2' #SUPPORTED #WINDOWS
-mod 'aws',             :git => "#{base_url}/puppetlabs/puppetlabs-aws",             :tag => '1.3.0' #SUPPORTED
+mod 'aws',             :git => "#{base_url}/puppetlabs/puppetlabs-aws",             :tag => '1.4.0' #SUPPORTED
 mod 'tagmail',         :git => "#{base_url}/puppetlabs/puppetlabs-tagmail",         :tag => '2.1.1' #SUPPORTED
 mod 'docker_platform', :git => "#{base_url}/puppetlabs/puppetlabs-docker_platform", :tag => '2.0.0' #SUPPORTED
 mod 'puppet_agent',    :git => "#{base_url}/puppetlabs/puppetlabs-puppet_agent",    :tag => '1.0.0' #SUPPORTED
-mod 'wsus_client',     :git => "#{base_url}/puppetlabs/puppetlabs-wsus_client",     :tag => '1.0.1' #SUPPORTED #WINDOWS
-mod 'azure',           :git => "#{base_url}/puppetlabs/puppetlabs-azure",           :tag => '1.0.1' #SUPPORTED #WINDOWS
-mod 'dsc',             :git => "#{base_url}/puppetlabs/puppetlabs-dsc",             :tag => '1.0.0' #SUPPORTED #WINDOWS
+mod 'wsus_client',     :git => "#{base_url}/puppetlabs/puppetlabs-wsus_client",     :tag => '1.0.2' #SUPPORTED #WINDOWS
+mod 'azure',           :git => "#{base_url}/puppetlabs/puppetlabs-azure",           :tag => '1.0.3' #SUPPORTED #WINDOWS
+mod 'dsc',             :git => "#{base_url}/puppetlabs/puppetlabs-dsc",             :tag => '1.0.1' #SUPPORTED #WINDOWS
 mod 'accounts',        :git => "#{base_url}/puppetlabs/puppetlabs-accounts",        :tag => '1.0.0' #SUPPORTED #WINDOWS
-#mod 'ciscopuppet',     :git => "#{base_url}/cisco/cisco-network-puppet-module",     :tag => 'v1.0.0' #SUPPORTED
+mod 'puppet_agent',    :git => "#{base_url}/puppetlabs/puppetlabs-puppet_agent",    :tag => '1.2.0' #SUPPORTED
+mod 'netdev_stdlib_eos', :git => "#{base_url}/arista-eosplus/puppet-netdev",    :tag => 'v1.1.1' #SUPPORTED
+mod 'ciscopuppet', :git => "#{base_url}/cisco/cisco-network-puppet-module",    :tag => 'v1.3.2' #SUPPORTED
+#mod 'ciscopuppet',     :git => "#{base_url}/cisco/cisco-network-puppet-module",     :tag => 'v1.3.2' #SUPPORTED
 #mod 'f5',              :git => "#{base_url}/puppetlabs/puppetlabs-f5",              :tag => '1.0.0' #SUPPORTED #WINDOWS
 # mod 'sqlserver',       :git => "#{base_url}/puppetlabs/puppetlabs-sqlserver",       :tag => '1.0.0' #SUPPORTED #WINDOWS
 mod 'sensu',         :git => "#{base_url}/sensu/sensu-puppet",         :tag => 'v1.5.5'  #APPROVED
