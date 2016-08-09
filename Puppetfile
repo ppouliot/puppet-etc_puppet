@@ -90,7 +90,7 @@ mod 'dsc',             :git => "#{base_url}/puppetlabs/puppetlabs-dsc",         
 mod 'accounts',        :git => "#{base_url}/puppetlabs/puppetlabs-accounts",        :tag => '1.0.0' #SUPPORTED #WINDOWS
 mod 'puppet_agent',    :git => "#{base_url}/puppetlabs/puppetlabs-puppet_agent",    :tag => '1.2.0' #SUPPORTED
 mod 'netdev_stdlib_eos', :git => "#{base_url}/arista-eosplus/puppet-netdev",    :tag => 'v1.1.1' #SUPPORTED
-mod 'ciscopuppet', :git => "#{base_url}/cisco/cisco-network-puppet-module",    :tag => 'v1.3.2' #SUPPORTED
+#mod 'ciscopuppet', :git => "#{base_url}/cisco/cisco-network-puppet-module",    :tag => 'v1.3.2' #SUPPORTED
 #mod 'ciscopuppet',     :git => "#{base_url}/cisco/cisco-network-puppet-module",     :tag => 'v1.3.2' #SUPPORTED
 #mod 'f5',              :git => "#{base_url}/puppetlabs/puppetlabs-f5",              :tag => '1.0.0' #SUPPORTED #WINDOWS
 # mod 'sqlserver',       :git => "#{base_url}/puppetlabs/puppetlabs-sqlserver",       :tag => '1.0.0' #SUPPORTED #WINDOWS
