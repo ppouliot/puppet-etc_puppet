@@ -38,34 +38,34 @@ node /^(docker[0-1]).openstack.tld/{
         image_tag =>  ['centos7']
       }
 
-      docker::image{'tfhartmann/puppetdb':
-        image_tag =>  ['latest']
-      }
+#      docker::image{'tfhartmann/puppetdb':
+#        image_tag =>  ['latest']
+#      }
 
-      docker::image{'tfhartmann/puppetserver':
-        image_tag =>  ['latest']
-      }
+#      docker::image{'tfhartmann/puppetserver':
+#        image_tag =>  ['latest']
+#      }
 
-      docker::image{'camptocamp/puppetboard':
-        image_tag =>  ['latest']
-      }
+#      docker::image{'camptocamp/puppetboard':
+#        image_tag =>  ['latest']
+#      }
 
       docker::image{'msopenstack/sentinel-centos':
         image_tag =>  ['latest']
       }
 
 
-      docker::run { 'puppetserver':
-        image           => 'tfhartmann/puppetserver:latest',
-        hostname        => 'puppet',
-        ports           => ['8140:8140'],
-      }
-      docker::run { 'puppetdb':
-        image           => 'tfhartmann/puppetdb:latest',
-        hostname        => 'puppetdb',
-        env             => ["DBHOST=${ipaddress}",'DBUSER=puppetdb','DBPASS=puppetdb'],
-        ports           => ['8080:8080','8081:8081'],
-      }
+#      docker::run { 'puppetserver':
+#        image           => 'tfhartmann/puppetserver:latest',
+#        hostname        => 'puppet',
+#        ports           => ['8140:8140'],
+#      }
+#      docker::run { 'puppetdb':
+#        image           => 'tfhartmann/puppetdb:latest',
+#        hostname        => 'puppetdb',
+#        env             => ["DBHOST=${ipaddress}",'DBUSER=puppetdb','DBPASS=puppetdb'],
+#        ports           => ['8080:8080','8081:8081'],
+#      }
 
     }
     default:{
@@ -84,7 +84,7 @@ node /^(docker[0-1]).openstack.tld/{
     source => 'puppet:///extra_files/bin/docker_remove_stale_containers.sh',
   }
 
-  file {'/root/join_shipoyard.sh':
+  file {'/root/join_shipyard.sh':
     ensure  => file,
     mode    => '0777',
     source => 'puppet:///extra_files/bin/join_shipyard.sh',

@@ -168,6 +168,7 @@ node 'c2-r13-u09' {
       'saferestart'                      => { 'version' => 'latest' },
       'saltstack'                        => { 'version' => 'latest' },
       'scp'                              => { 'version' => 'latest' },
+      'Sidebar'                          => { 'version' => 'latest' },
       'swarm'                            => { 'version' => 'latest' },
       'subversion'                       => { 'version' => 'latest' },
       'script-security'                  => { 'version' => 'latest' },
@@ -254,6 +255,11 @@ node 'c2-r13-u09' {
   }
   vcsrepo{"${gerrit_git_projects}/puppet-pf.git":
     source => 'https://github.com/ppouliot/puppet-pf',
+    provider => git,
+    ensure   => 'latest',
+  }
+  vcsrepo{"${gerrit_git_projects}/hiera-ipam.git":
+    source => 'https://github.com/ppouliot/hiera-ipam',
     provider => git,
     ensure   => 'latest',
   }
@@ -472,6 +478,11 @@ node 'c2-r13-u09' {
     provider => git,
     ensure   => 'latest',
   }
+  vcsrepo{"${gerrit_git_projects}/puppet-winimagebuilder":
+    source => 'https://github.com/ppouliot/puppet-winimagebuilder',
+    provider => git,
+    ensure   => 'latest',
+  }
   vcsrepo{"${gerrit_git_projects}/puppet-notepadplusplus.git":
     source => 'https://github.com/openstack-hyper-v/puppet-notepadplusplus',
     provider => git,
@@ -589,6 +600,8 @@ node 'c2-r13-u09' {
     'puppet-redis',
     'puppet-mingw',
     'puppet-visualcplusplus2008',
+    'puppet-visualcplusplus2010',
+    'puppet-visualcplusplus2012',
     'puppet-windows_sensu',
     'puppet-ceilometer_hyper_v',
     'puppet-nova_hyper_v',
@@ -609,9 +622,9 @@ node 'c2-r13-u09' {
     'puppet-windows_shortcut',
     'puppet-windows_containers',
     'puppet-windows_platform_facts',
+    'puppet-winimagebuilder',
     'puppet-notepadplusplus',
-    'puppet-visualcplusplus2012',
-    'puppet-visualcplusplus2010',
+    'hiera-ipam',
     'dockerfile-sentinel-all']:
   } -> 
   exec{'gerrit_stop_reindex_reset_gerrit_ownership_and_start':
@@ -620,7 +633,7 @@ node 'c2-r13-u09' {
     refreshonly => true,
   }
 }
-node 'c2-r13-u31-n01.openstack.tld' {
+node 'eth0-c2-r13-u05' {
   if $::kernel == 'windows' {
     Package{ provider => chocolatey, }
   }
@@ -733,14 +746,12 @@ node 'c2-r13-u13' {
     'putty',
     'winrar',
     'VirtualCloneDrive',
-    'javaruntime',
     'python',
     'python2',
     'docker',
     'google-chrome-x64',
     'Firefox',
     'jdk8',
-    'jre8',
     ]:
     ensure   => latest,
   } ->
@@ -755,7 +766,7 @@ node 'c2-r13-u13' {
   } ->
   windows_env{'JAVA_HOME=C:\Program Files (x86)\Java\jre1.8.0_77':}
   # Cloudbase Windows OpenStack Imaging Tools
-  vcsrepo{'c:\Program Files\WindowsPowershell\Modules\windows-openstack-imaging-tools':
+  vcsrepo{'C:\Windows\System32\WindowsPowerShell\v1.0\Modules\WinImageBuilder':
     source   => 'https://github.com/cloudbase/windows-openstack-imaging-tools',
     provider => git,
     ensure   => present,
@@ -764,13 +775,13 @@ node 'c2-r13-u13' {
   exec{'unblock-windows_openstack_imaging_tools':
     command   => 'dir * |Unblock-File',
     provider  => powershell,
-    cwd       => 'c:\Program Files\WindowsPowershell\Modules\windows-openstack-imaging-tools',
+    cwd       => 'C:\Windows\System32\WindowsPowerShell\v1.0\Modules\WinImageBuilder',
     logoutput => true,
   } ->
   exec{'unblock-windows_openstack_imaging_tools_bin':
     command   => 'dir * |Unblock-File',
     provider  => powershell,
-    cwd       => 'c:\Program Files\WindowsPowershell\Modules\windows-openstack-imaging-tools\bin',
+    cwd       => 'C:\Windows\System32\WindowsPowerShell\v1.0\Modules\WinImageBuilder\bin',
     logoutput => true,
   }
 

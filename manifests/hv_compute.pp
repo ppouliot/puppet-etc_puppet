@@ -10,10 +10,10 @@ node /^hv-compute[0-9]+\.openstack\.tld$/{
       class {'windows_common::configuration::disable_firewalls':}
       class {'windows_common::configuration::disable_auto_update':}
       class {'windows_common::configuration::enable_iscsi_initiator':}
-#      class {'windows_common::configuration::ntp':
- #       before => Class['windows_openssl'],
- #     }
-#      class {'windows_common::configuration::rdp':}
+      class {'windows_common::configuration::ntp':
+        before => Class['windows_openssl'],
+      }
+      class {'windows_common::configuration::rdp':}
       class {'windows_openssl': }
       class {'java': distribution => 'jre' }
 
@@ -26,7 +26,7 @@ node /^hv-compute[0-9]+\.openstack\.tld$/{
 
       #class {'windows_freerdp': }
 
-      class {'windows_git': before => Class['cloudbase_prep'],}
+      #class {'windows_git': before => Class['cloudbase_prep'],}
       class {'cloudbase_prep': }
       class {'jenkins::slave':
         install_java      => false,
@@ -88,6 +88,7 @@ node
      'c2-r1-u10.openstack.tld', ## Fails to respond to WSMan -- Timeout
      'c2-r1-u11.openstack.tld', ## errors on node, requires review/reconfig > "In review, 2015-03-17"-Tim
      'c2-r1-u12.openstack.tld',
+     'c2-r1-u12.ad.openstack.tld',
      'c2-r1-u13.openstack.tld',
      'c2-r1-u14.openstack.tld',
      'c2-r1-u15.openstack.tld',
@@ -113,6 +114,7 @@ node
      'c2-r1-u40.openstack.tld',
      'c2-r2-u02.openstack.tld',
      'c2-r2-u03.openstack.tld',
+     'c2-r2-u03.ad.openstack.tld',
      'c2-r2-u04.openstack.tld',
      'c2-r2-u05.openstack.tld',
      'c2-r2-u06.openstack.tld',
@@ -136,6 +138,7 @@ node
      'c2-r2-u24.openstack.tld', 
      'c2-r2-u25.openstack.tld',
      'c2-r2-u26.openstack.tld',
+     'c2-r2-u26.ad.openstack.tld',
      'c2-r2-u27.ad.openstack.tld',
      'c2-r2-u27.openstack.tld',
      'c2-r2-u28.ad.openstack.tld',
@@ -144,6 +147,7 @@ node
      'c2-r2-u33.ad.openstack.tld',
      'c2-r2-u35.ad.openstack.tld',
      'c2-r2-u36.ad.openstack.tld',
+     'c2-r2-u37.openstack.tld',
      'c2-r2-u37.ad.openstack.tld',
      'c2-r2-u38.openstack.tld', ## errors on node, requires review/reconfig
      'c2-r2-u39.ad.openstack.tld',
@@ -333,8 +337,10 @@ node
      'c2-r17-u32.ad.openstack.tld'
 
 {
+
   case $kernel {
     'Windows':{
+  # Set's the Environment from production to staging so we can use the openstack-hyper-v jenkins fork with windows enablement
       File {
         source_permissions => ignore,
       }
@@ -343,10 +349,10 @@ node
       class {'windows_common::configuration::disable_firewalls':}
       class {'windows_common::configuration::disable_auto_update':}
       class {'windows_common::configuration::enable_iscsi_initiator':}
-#      class {'windows_common::configuration::ntp':
- #       before => Class['windows_openssl'],
- #     }
-    #  class {'windows_common::configuration::rdp':}
+     # class {'windows_common::configuration::ntp':
+     #   before => Class['windows_openssl'],
+     # }
+     #class {'windows_common::configuration::rdp':}
       class {'windows_openssl': }
       class {'java': distribution => 'jre' }
 
@@ -357,8 +363,7 @@ node
         interface_address => '10.0.*',
       }
 
-      class {'windows_git': before => Class['cloudbase_prep'],}
-      
+      #class {'windows_git': before => Class['cloudbase_prep'],}
       class {'cloudbase_prep': }
       class {'windows_freerdp': }
 
@@ -386,8 +391,8 @@ node
         executors         => 1,
 #        labels            => $jenkins_label,
 #        masterurl         => 'http://jenkins.openstack.tld:8080',
-        labels            => $jenkins_label,
-        masterurl         => $jenkins_host,
+        labels            => "almost-ready",
+        masterurl         => "http://jenkins.openstack.tld:8080",
       }
 
 #      $q_ip = '10.21.7.22'

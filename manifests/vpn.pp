@@ -244,6 +244,18 @@ node /vpn.*/ {
     server => 'hypervci',
     remote_host => '64.119.130.115',
   }
+# mcostache@cloudbasesolutions.com
+  openvpn::client {'mcostache':
+    server => 'hypervci',
+    remote_host => '64.119.130.115',
+  }
+
+# bcarpusor@cloudbasesolutions.com
+  openvpn::client {'bcarpusor':
+    server => 'hypervci',
+    remote_host => '64.119.130.115',
+  }
+
 
   class {'quagga':
     ospfd_source => 'puppet:///extra_files/ospfd.conf',

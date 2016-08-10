@@ -1,5 +1,9 @@
 node 'eth0-c2-r13-u07','eth0-c2-r13-u11' {
   class{'profiles::kvm_host':}
+  include ::apt
+  package{['cluster-agents','fence-agents']:
+    ensure => latest,
+  } ->
   class{'corosync':
     enable_secauth           => true,
     authkey                  => '/var/lib/puppet/ssl/certs/ca.pem',
@@ -9,7 +13,6 @@ node 'eth0-c2-r13-u07','eth0-c2-r13-u11' {
     quorum_members           => ['10.13.2.7','10.13.2.11'],
     manage_pacemaker_service => true,
     force_online             => true,
-    package_pcs              => true,
   }
   cs_primitive { 'dlm':
     primitive_class => 'ocf',
@@ -147,26 +150,33 @@ node 'eth0-c2-r13-u07','eth0-c2-r13-u11' {
 #  } ->
   include ::drbd
   drbd::resource{'r0':
- #   device        => '/dev/drbd0',
-    disk          => '/dev/mapper/vg_drbd_ocfs2-lv_drbd_etc_libvirt_qemu',
-    secret        => 'secret',
-    #host1         => 'eth0-c2-r13-u07',
-    #host2         => 'eth0-c2-r13-u11',
-    #ip1           => '10.13.2.7',
-    #ip2           => '10.13.2.11',
-    cluster       => [ 'eth0-c2-r13-u07','eth0-c2-r13-u11'],
-    port          => 7788,
-    ha_primary    => true,
-    allow_two_primaries => true,
-    net_parameters => {
-      'after-sb-0pri'       => 'discard-zero-changes',
-      'after-sb-1pri'       => 'discard-secondary',
-      'after-sb-2pri'       => 'disconnect',
+    device               => '/dev/drbd0',
+    disk                  => '/dev/mapper/vg_drbd_ocfs2-lv_drbd_etc_libvirt_qemu',
+    secret                => 'secret',
+    #host1                => 'eth0-c2-r13-u07',
+    #host2                => 'eth0-c2-r13-u11',
+    #ip1                  => '10.13.2.7',
+    #ip2                  => '10.13.2.11',
+    cluster              => [ 'eth0-c2-r13-u07','eth0-c2-r13-u11'],
+#    cluster               => [ '10.13.2.7','10.13.2.11'],
+    port                  => 7788,
+    ha_primary            => true,
+    allow_two_primaries   => true,
+    startup_parameters    => {
+      'wfc-timeout'       => '15',
+      'degr-wfc-timeout'  => '60',
+      'become-primary-on' => 'both',
     },
-    initial_setup => true,
-    require       => Logical_volume['lv_drbd_etc_libvirt_qemu']
+    net_parameters        => {
+      'after-sb-0pri'     => 'discard-zero-changes',
+      'after-sb-1pri'     => 'discard-secondary',
+      'after-sb-2pri'     => 'disconnect',
+    },
+    initial_setup         => true,
+    require               => Logical_volume['lv_drbd_etc_libvirt_qemu']
   }
   drbd::resource{'r1':
+    cluster       => [ '10.13.2.7','10.13.2.11'],
     host1         => 'eth0-c2-r13-u07',
     host2         => 'eth0-c2-r13-u11',
     ip1           => '10.13.2.7',
@@ -174,7 +184,7 @@ node 'eth0-c2-r13-u07','eth0-c2-r13-u11' {
     device        => '/dev/drbd1',
     disk          => '/dev/mapper/vg_drbd_ocfs2-lv_drbd_var_libvirt_images',
     secret        => 'secret',
-    cluster       => [ 'eth0-c2-r13-u07','eth0-c2-r13-u11'],
+#    cluster       => [ 'eth0-c2-r13-u07','eth0-c2-r13-u11'],
     port          => 7789,
     allow_two_primaries => true,
     ha_primary    => true,
