@@ -12,7 +12,7 @@ node 'c2-r13-u09' {
   } ->
 
   docker::image {'ubuntu':
-    image_tag       =>  ['trusty']
+    image_tag       =>  ['trusty','xenial']
   } ->
 
   docker::image{'msopenstack/sentinel-ubuntu':
@@ -727,6 +727,7 @@ node 'c2-r13-u13' {
     } -> 
     windowsfeature{'NET-Framework-Core': }
   }
+#  class{'petools':}
   # puppet & r10k
   package { 'puppet':
     ensure   => latest,
@@ -809,31 +810,56 @@ node 'c2-r13-u13' {
     require => Package['unzip'],
   } -> 
 
+  acl{'c:\ProgramData\staging':
+    permissions => [
+      { identity => 'Administrator', rights => ['full'] },
+      { identity => 'Administrators', rights => ['full'] },
+    ],
+    require     => Class['staging'],
+  }
+
   staging::file{'virtio-win.iso':
     source  => 'https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso',
     timeout => 0,
   }
-
+  staging::file{'apc_hw05_aos640_rpdu2g640_bootmon108.exe':
+    source => 'ftp://restrict:Kop$74!@ftp.apc.com/restricted/hardware/nmcard/firmware/rpdu2g/640/apc_hw05_aos640_rpdu2g640_bootmon108.exe',
+  } ->
+  exec{'extract_apc_apc_hw05_aos640_rpdu2g640_bootmon108.exe':
+    command => 'C:\Programdata\staging\apc_hw05_aos640_rpdu2g640_bootmon108.exe /auto',
+    logoutput => true,
+    creates => [
+      'C:\Programdata\staging\apc_hw05_aos640_rpdu2g640_bootmon108',
+      'C:\Programdata\staging\apc_hw05_aos640_rpdu2g640_bootmon108\pc_hw05_aos_640.bin',
+      'C:\Programdata\staging\apc_hw05_aos640_rpdu2g640_bootmon108\apc_hw05_bootmon_108.bin',
+      'C:\Programdata\staging\apc_hw05_aos640_rpdu2g640_bootmon108\apc_hw05_rpdu2g_640.bin',
+      'C:\Programdata\staging\apc_hw05_aos640_rpdu2g640_bootmon108\config.txt',
+      'C:\Programdata\staging\apc_hw05_aos640_rpdu2g640_bootmon108\FW_Upgrade_R2.exe',
+      'C:\Programdata\staging\apc_hw05_aos640_rpdu2g640_bootmon108\iplist.txt',
+      'C:\Programdata\staging\apc_hw05_aos640_rpdu2g640_bootmon108\winftp32.dll',
+      'C:\Programdata\staging\apc_hw05_aos640_rpdu2g640_bootmon108\winftp32.lib'],
+  }
 
   file { 'c:\programdata\windows_isos\en_windows_8_1_enterprise_x64_dvd_2971902.iso':
     ensure  => 'file',
     content => '{md5}8e194185fcce4ea737f274ee9005ddf0',
     mode    => '0777',
-  } ->
-  exec{'virtual_clone_drive_mount_windows_8.1_x64_291902.iso':
-    command    => '"C:\Program Files (x86)\Elaborate Bytes\VirtualCloneDrive\Daemon.exe" -mount 0 "c:\programdata\windows_isos\en_windows_8_1_enterprise_x64_dvd_2971902.iso"',
-    cwd        => 'c:\programdata\windows_isos',
-    logoutput  => true,
-    require    => Package['VirtualCloneDrive'],
   }
+#  exec{'virtual_clone_drive_mount_windows_8.1_x64_291902.iso':
+#    command    => '"C:\Program Files (x86)\Elaborate Bytes\VirtualCloneDrive\Daemon.exe" -mount 0 "c:\programdata\windows_isos\en_windows_8_1_enterprise_x64_dvd_2971902.iso"',
+#    cwd        => 'c:\programdata\windows_isos',
+#    logoutput  => true,
+#    require    => Package['VirtualCloneDrive'],
+#    refreshonly => true,
+#  }
 
-  exec{'virtual_clone_drive_unmount':
-    command     => '"C:\Program Files (x86)\Elaborate Bytes\VirtualCloneDrive\Daemon.exe" -mount 0',
-    cwd         => 'c:\programdata\windows_isos',
-    logoutput   => true,
-    require     => Package['VirtualCloneDrive'],
-    refreshonly => true,
-  }
+#  exec{'virtual_clone_drive_unmount':
+#    command     => '"C:\Program Files (x86)\Elaborate Bytes\VirtualCloneDrive\Daemon.exe" -mount 0',
+#    cwd         => 'c:\programdata\windows_isos',
+#    logoutput   => true,
+#    require     => Package['VirtualCloneDrive'],
+#    refreshonly => true,
+#  }
 
 
 #  exec {'virtual_clone_drive_mount_windows_iso':

@@ -255,7 +255,17 @@ node /vpn.*/ {
     server => 'hypervci',
     remote_host => '64.119.130.115',
   }
-
+# Matei Micu
+# mmicu@cloudbasesolutions.com
+  openvpn::client {'mmicu':
+    server => 'hypervci',
+    remote_host => '64.119.130.115',
+  }
+# Iulia Toader? (v-sitoad@microsoft.com)
+  openvpn::client {'itoader':
+    server => 'hypervci',
+    remote_host => '64.119.130.115',
+  }
 
   class {'quagga':
     ospfd_source => 'puppet:///extra_files/ospfd.conf',

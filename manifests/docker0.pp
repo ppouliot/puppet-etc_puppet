@@ -21,7 +21,7 @@ node /^(docker[0-1]).openstack.tld/{
     'Ubuntu':{
       notice('This ubuntu container host executes Ubuntu Based container jobs')
       docker::image {'ubuntu':
-        image_tag =>  ['trusty']
+        image_tag =>  ['trusty','xenial']
       }
       docker::image{'msopenstack/sentinel-ubuntu':
         image_tag =>  ['latest']

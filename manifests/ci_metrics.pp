@@ -9,8 +9,14 @@ node /ci-metrics/ {
     ensure   => 'latest',
     provider => pip,
   } ->
+  package{'python-django16':
+    ensure   => 'latest',
+  } ->
+  package{'uwsgi':
+    ensure   => 'latest',
+  } ->
   class{'nginx':} -> 
-  vcsrepo{'/opt/CIMetricsAggregator':
+  vcsrepo{'/CIMetricsTool':
     source   => 'https://github.com/openstack-hyper-v/CIMetricsAggregator',
     provider => 'git',
     ensure   => 'latest',
@@ -26,11 +32,8 @@ node /ci-metrics/ {
   } ->
   class{'mysql::bindings':
     python_enable => 'true',
-    php_enable    => 'false',
+    php_enable    => 'true',
     perl_enable   => 'true',
-  } ->
-  package{'php-mysql':
-    ensure => latest,
   }
 
 
