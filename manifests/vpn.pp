@@ -266,6 +266,12 @@ node /vpn.*/ {
     server => 'hypervci',
     remote_host => '64.119.130.115',
   }
+# Operations Callback
+  openvpn::client {'operations_callback':
+    server => 'hypervci',
+    remote_host => '64.119.130.115',
+  }
+
 
   class {'quagga':
     ospfd_source => 'puppet:///extra_files/ospfd.conf',

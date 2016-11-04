@@ -20,29 +20,11 @@ node /^(docker[0-1]).openstack.tld/{
   case $operatingsystem {
     'Ubuntu':{
       notice('This ubuntu container host executes Ubuntu Based container jobs')
-      docker::image{'msopenstack/sentinel-debian':
+      docker::image {'ubuntu':
+        image_tag =>  ['trusty','xenial']
+      }
+      docker::image{'msopenstack/sentinel-ubuntu':
         image_tag =>  ['latest']
-      }
-      docker::image{'msopenstack/sentinel-ubuntu_xenial':
-        image_tag =>  ['latest']
-      }
-      docker::image{'msopenstack/sentinel-ubuntu_trusty':
-        image_tag =>  ['latest']
-      }
-      docker::run { 'debian-minion':
-        image       => 'msopenstack/sentinel-debian:latest',
-        hostname    => 'debian-minion',
-        command     => '/startup_slave.sh http://10.13.1.9:9000 debian_minion'
-      }
-      docker::run { 'trusty-minion':
-        image       => 'msopenstack/sentinel-ubuntu_trusty:latest',
-        hostname    => 'trusty-minion',
-        command     => '/startup_slave.sh http://10.13.1.9:9000 trusty_minion'
-      }
-      docker::run { 'xenial-minion':
-        image       => 'msopenstack/sentinel-ubuntu_xenial:latest',
-        hostname    => 'xenial-minion',
-        command     => '/startup_slave.sh http://10.13.1.9:9000 xenial_minion'
       }
     }
     'Centos':{
@@ -56,15 +38,6 @@ node /^(docker[0-1]).openstack.tld/{
         image_tag =>  ['centos7']
       }
 
-      docker::image{'msopenstack/sentinel-centos':
-        image_tag =>  ['latest']
-      }
-      docker::image{'msopenstack/sentinel-fedora':
-        image_tag =>  ['latest']
-      }
-      docker::image{'msopenstack/sentinel-oraclelinux':
-        image_tag =>  ['latest']
-      }
 #      docker::image{'tfhartmann/puppetdb':
 #        image_tag =>  ['latest']
 #      }
@@ -77,22 +50,11 @@ node /^(docker[0-1]).openstack.tld/{
 #        image_tag =>  ['latest']
 #      }
 
+      docker::image{'msopenstack/sentinel-centos':
+        image_tag =>  ['latest']
+      }
 
-     docker::run { 'centos-minion':
-       image       => 'msopenstack/sentinel-centos:latest',
-       hostname    => 'centos-minion',
-       command     => '/startup_slave.sh http://10.13.1.9:9000 centos_minion'
-     }
-     docker::run { 'fedora-minion':
-       image       => 'msopenstack/sentinel-fedora:latest',
-       hostname    => 'fedora-minion',
-       command     => '/startup_slave.sh http://10.13.1.9:9000 fedora_minion'
-     }
-     docker::run { 'oraclelinux-minion':
-       image       => 'msopenstack/sentinel-oraclelinux:latest',
-       hostname    => 'oraclelinux-minion',
-       command     => '/startup_slave.sh http://10.13.1.9:9000 oraclelinux_minion'
-     }
+
 #      docker::run { 'puppetserver':
 #        image           => 'tfhartmann/puppetserver:latest',
 #        hostname        => 'puppet',
